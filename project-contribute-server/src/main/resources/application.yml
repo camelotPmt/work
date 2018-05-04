@@ -1,0 +1,6 @@
+# server
+server:
+  port: 9000
+#  contett-path: /peoject  # 项目根路径配置
+
+
