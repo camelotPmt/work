@@ -16,6 +16,8 @@ const TaskManager = r => require.ensure([], () => r(require('../components/Regis
 const systemManager = r => require.ensure([], () => r(require('../components/SystemManagemont/index.vue')), 'TaskManager')
 const userManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/userManagement.vue')), 'userManagement')
 const roleManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/roleManagement.vue')), 'roleManagement')
+const authManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/authorityManagement.vue')), 'authManagement')
+
 const ProjectManager = r => require.ensure([], () => r(require('../components/ProjectManagemont/index.vue')), 'ProjectManager')
 const ProjectList = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/projectList.vue')), 'ProjectList')
 const ProjectSetting = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/projectSetting.vue')), 'ProjectSetting')
@@ -89,9 +91,14 @@ export default new Router({
               component: userManagement,
             },
             {
-              path: '/systemManager/roleManagement', // 角色管理
+              path: '/roleManagement', // 角色管理
               name: 'roleManagement',
               component: roleManagement,
+            },
+            {
+              path: '/authManagement', // 权限管理
+              name: 'authManagement',
+              component: authManagement,
             },
           ]
         },

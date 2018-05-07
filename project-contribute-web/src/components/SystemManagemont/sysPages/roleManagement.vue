@@ -14,8 +14,8 @@
                 </FormItem>
                 <FormItem>
                     <Button type="primary">查询</Button>
-                    <Button type="ghost ml-10">重置</Button>
-                    <Button type="ghost ml-10">添加</Button>
+                    <Button type="ghost" class="ml-10">重置</Button>
+                    <Button type="ghost" class="ml-10">添加</Button>
                 </FormItem>
             </Form>
             <Table :columns="columns1" :data="source"></Table>

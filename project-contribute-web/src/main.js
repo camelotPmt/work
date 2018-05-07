@@ -12,12 +12,12 @@ import './my-theme/index.css';
 import './fonts/iconfont.css';
 import { HTTP } from './util/axios'
 import { API } from './util/axios'
-import qs from 'qs'
+import ZkTable from 'vue-table-with-tree-grid'
 Vue.prototype.$http = HTTP;
 Vue.prototype.$api = API;
-Vue.prototype.qs = qs;
 Vue.use(iView);
 Vue.config.productionTip = false
+Vue.use(ZkTable)
 //Vue.use(VueRouter);
 
 /* eslint-disable no-new */

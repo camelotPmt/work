@@ -7,11 +7,11 @@
             </MenuItem>
             <MenuItem name="2">
                 <Icon type="document-text"></Icon>
-                <router-link to="/systemManager/roleManagement">角色管理</router-link>
+                <router-link to="/roleManagement">角色管理</router-link>
             </MenuItem>
             <MenuItem name="3">
                 <Icon type="document-text"></Icon>
-                <router-link to="">权限管理</router-link>
+                <router-link to="/authManagement">权限管理</router-link>
             </MenuItem>
             <MenuItem name="4">
                 <Icon type="document-text"></Icon>
