@@ -169,4 +169,15 @@ ul,li{ list-style: none;}
     font-size:12px;
     border-radius:10px;
 }
+/*首页*/
+.home-container .ivu-select-selection,.home-container .ivu-select:focus .ivu-select-selection
+{
+    border-radius:0;
+    background:#f5f5f5;
+    box-shadow:none;
+    outline: none;
+    margin:0 10px;
+    border:none;
+}
+.home-container .ivu-select-arrow{ display:none;}
  

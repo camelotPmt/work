@@ -1,18 +1,9 @@
 <template>
     <div class="home-container">
         <div class="change-item">
-            <Form :model="ItemChange" inline>
-                <FormItem>
-                    <Select v-model="ItemChange.select" placeholder="请选择需要添加的模块">
-                        <Option value="项目进度">项目进度</Option>
-                        <Option value="我的代办任务">我的代办任务</Option>
-                        <Option value="可认领任务">可认领任务</Option>
-                    </Select>
-                </FormItem>
-                <FormItem>
-                    <Button type="ghost">添加</Button>
-                </FormItem>
-            </Form>
+            <Select v-model="selectBox" filterable multiple placeholder="全部模块">
+                <Option v-for="item in selectList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
         </div>
         <Row class="mb-20">
             <Col span="8">
@@ -23,6 +14,9 @@
                         <a class="fr mr-10">移动</a>
                     </div>
                     <Table :columns="columns1" :data="data1"></Table>
+                    <div class="more-detail">
+                        <router-link to="" title="查看详情"><i class="iconfont icon-gengduo"></i></router-link>
+                    </div>
                 </div>
             </Col>
             <Col span="8">
@@ -33,6 +27,9 @@
                         <a class="fr mr-10">移动</a>
                     </div>
                     <Table :columns="columns1" :data="data1" ></Table>
+                    <div class="more-detail">
+                        <router-link to="" title="查看详情"><i class="iconfont icon-gengduo"></i></router-link>
+                    </div>
                 </div>
             </Col>
             <Col span="8">
@@ -43,6 +40,9 @@
                         <a class="fr mr-10">移动</a>
                     </div>
                     <Table :columns="columns1" :data="data1"></Table>
+                    <div class="more-detail">
+                        <router-link to="" title="查看详情"><i class="iconfont icon-gengduo"></i></router-link>
+                    </div>
                 </div>
             </Col>
         </Row>
@@ -56,6 +56,9 @@
                         <a class="fr mr-10">移动</a>
                     </div>
                     <Table :columns="columns1" :data="data1"></Table>
+                    <div class="more-detail">
+                        <router-link to="" title="查看详情"><i class="iconfont icon-gengduo"></i></router-link>
+                    </div>
                 </div>
             </Col>
             <Col span="8">
@@ -66,6 +69,9 @@
                         <a class="fr mr-10">移动</a>
                     </div>
                     <Table :columns="columns1" :data="data1"></Table>
+                    <div class="more-detail">
+                        <router-link to="" title="查看详情"><i class="iconfont icon-gengduo"></i></router-link>
+                    </div>
                 </div>
             </Col>
             <Col span="8">
@@ -76,6 +82,9 @@
                         <a class="fr mr-10">移动</a>
                     </div>
                     <Table :columns="columns1" :data="data1"></Table>
+                    <div class="more-detail">
+                        <router-link to="" title="查看详情"><i class="iconfont icon-gengduo"></i></router-link>
+                    </div>
                 </div>
             </Col>
         </Row>
@@ -88,6 +97,9 @@
                         <a class="fr mr-10">移动</a>
                     </div>
                     <Table :columns="columns1" :data="data1"></Table>
+                    <div class="more-detail">
+                        <router-link to="" title="查看详情"><i class="iconfont icon-gengduo"></i></router-link>
+                    </div>
                 </div>
             </Col>
             <Col span="8">
@@ -98,6 +110,9 @@
                         <a class="fr mr-10">移动</a>
                     </div>
                     <Table :columns="columns1" :data="data1"></Table>
+                    <div class="more-detail">
+                        <router-link to="" title="查看详情"><i class="iconfont icon-gengduo"></i></router-link>
+                    </div>
                 </div>
             </Col>
         </Row>
@@ -107,9 +122,33 @@
 export default {
     data() {
         return {
-            ItemChange: {
-                select: '',
-            },
+            selectList: [
+                {
+                    value: '项目进度',
+                    label: '项目进度'
+                },
+                {
+                    value: '可认领任务',
+                    label: '可认领任务'
+                },
+                {
+                    value: '最新动态',
+                    label: '最新动态'
+                },
+                {
+                    value: '我的代办',
+                    label: '我的代办'
+                },
+                {
+                    value: '进行中的任务',
+                    label: '进行中的任务'
+                },
+                {
+                    value: '指派给我的BUG',
+                    label: '指派给我的BUG'
+                }
+            ],
+            selectBox: [],
             columns1: [
                 {
                     title: 'Name',
@@ -191,5 +230,15 @@ export default {
         left:0;
         top:50%;
         margin-top:-7px;
+    }
+    .more-detail{
+        width:100%;
+        height:40px;
+        line-height: 40px;
+        text-align: center;
+        border:1px solid #eee;
+        border-top:none;
+        .iconfont{ font-size:24px; color:#0459ab;}
+        a{ display:block;}
     }
 </style>
