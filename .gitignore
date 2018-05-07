@@ -17,7 +17,8 @@ Thumbs.db
 *.log
 
 # remove SVN
-.sn
+.svn
+
 
 
 # for Xcode
