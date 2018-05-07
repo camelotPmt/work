@@ -1,7 +1,7 @@
 <template>
     <div class="home-container">
         <div class="change-item">
-            <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
+            <Form :model="ItemChange" inline>
                 <FormItem>
                     <Select v-model="ItemChange.select" placeholder="请选择需要添加的模块">
                         <Option value="项目进度">项目进度</Option>

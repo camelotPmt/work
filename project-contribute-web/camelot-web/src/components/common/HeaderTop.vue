@@ -20,7 +20,7 @@
                 <router-link to="">我的</router-link>
             </li>
             <li class="fl">
-                <router-link to=""><span>消息<i>99+</i></span></router-link>
+                <router-link to="/Message"><span>消息<i>99+</i></span></router-link>
             </li>
         </ul>
     </div>

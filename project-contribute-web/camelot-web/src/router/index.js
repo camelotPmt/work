@@ -8,6 +8,7 @@ import Login from '@/components/Login'// 登录
 // import * as response from '@/util/response'
 // 引入组件
 const HomeIn = r => require.ensure([], () => r(require('../components/RegisterLogin/Home.vue')), 'HomeIn')
+const Message = r => require.ensure([], () => r(require('../components/RegisterLogin/MessageMail.vue')), 'Message')
 const PersonalCenter = r => require.ensure([], () => r(require('../components/RegisterLogin/PersonalCenter.vue')), 'PersonalCenter')
 const PersonalForm = r => require.ensure([], () => r(require('../components/RegisterLogin/personalCenterD/personalForm.vue')), 'LeftNav')
 const EditPassword = r => require.ensure([], () => r(require('../components/RegisterLogin/personalCenterD/editPassword.vue')), 'EditPassword')
@@ -71,6 +72,11 @@ export default new Router({
               component: TaskManager,
             }
           ]
+        },
+        {
+          path: '/Message', // 站内信
+          name: 'Message',
+          component: Message,
         },
         {
           path: '/systemManager', // 系统管理
