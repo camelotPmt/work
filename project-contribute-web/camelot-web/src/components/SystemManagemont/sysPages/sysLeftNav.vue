@@ -1,6 +1,6 @@
 <template>
     <div class="sys-nav-cont">
-        <Menu :theme="theme2" active-name="1">
+        <Menu active-name="1">
             <MenuItem name="1">
                 <Icon type="document-text"></Icon>
                 <router-link to="/systemManager">用户管理</router-link>
@@ -39,5 +39,12 @@
             width:100% !important;
             height:100%;
         }
+        .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
+            padding:0;
+            height:50px;
+            line-height:50px;
+        }
+        .ivu-icon{position: absolute; top:15px; font-size:20px; left:20px;}
+        a{ display:block; padding-left:50px;}
     }
 </style>

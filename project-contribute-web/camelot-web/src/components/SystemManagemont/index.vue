@@ -48,6 +48,7 @@ export default {
             background:#fff;
             padding:20px;
             min-height:500px;
+            .ivu-select{ width:149px !important;}
         }
     }
 </style>
