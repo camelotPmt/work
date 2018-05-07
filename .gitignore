@@ -7,6 +7,8 @@ Thumbs.db
 .idea/*
 *.iml
 /out/*
+*/target
+*/target/*
 
 # for Eclipse
 *.project
