@@ -11,7 +11,7 @@
             </MenuItem>
             <MenuItem name="3">
                 <i class="iconfont icon-caidan"></i>
-                <router-link to="/authManagement">菜单管理</router-link>
+                <router-link to="/menuManagement">菜单管理</router-link>
             </MenuItem>
             <MenuItem name="4">
                 <i class="iconfont icon-quanxianguanli"></i>
@@ -19,19 +19,19 @@
             </MenuItem>
             <MenuItem name="5">
                 <i class="iconfont icon-zuzhijiagou"></i>
-                <router-link to="">组织架构</router-link>
+                <router-link to="/organizationChart">组织架构</router-link>
             </MenuItem>
             <MenuItem name="6">
                 <i class="iconfont icon-zhaoshengshujuzidian"></i>
-                <router-link to="">数据库字典</router-link>
+                <router-link to="/dataBase">数据库字典</router-link>
             </MenuItem>
             <MenuItem name="7">
                 <i class="iconfont icon-xitongceshiyongli"></i>
-                <router-link to="">用例库</router-link>
+                <router-link to="/userCase">用例库</router-link>
             </MenuItem>
             <MenuItem name="8">
                 <i class="iconfont icon-caozuorizhi"></i>
-                <router-link to="">操作日志</router-link>
+                <router-link to="/operationLog">操作日志</router-link>
             </MenuItem>
         </Menu>
     </div>

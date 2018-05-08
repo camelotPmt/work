@@ -51,7 +51,7 @@ export default {
         a{color:#fff;}
     }
     .logo{ 
-        font-size:24px;
+        font-size:22px;
         float:left;
         margin:0 0 0 30px;
         a{color:#fff;}
