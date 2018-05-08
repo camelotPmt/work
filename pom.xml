@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>project-contribute-server</module>
-        <module>project-contribute-web</module>
+        <!--<module>project-contribute-web</module>-->
     </modules>
 
     <parent>
