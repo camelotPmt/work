@@ -18,8 +18,13 @@ const TaskManager = r => require.ensure([], () => r(require('../components/Regis
 const systemManager = r => require.ensure([], () => r(require('../components/SystemManagemont/index.vue')), 'TaskManager')
 const userManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/userManagement.vue')), 'userManagement')
 const roleManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/roleManagement.vue')), 'roleManagement')
-const authManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/authorityManagement.vue')), 'authManagement')
+const menuManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/menuManagement.vue')), 'menuManagement')
+const organizationChart = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/organizationChart.vue')), 'organizationChart')
+const dataBase = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/dataBase.vue')), 'dataBase')
+const userCase = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/UseCaseLibrary.vue')), 'userCase')
+const operationLog = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/operationLog.vue')), 'operationLog')
 
+const authManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/authorityManagement.vue')), 'authManagement')
 const ProjectManager = r => require.ensure([], () => r(require('../components/ProjectManagemont/index.vue')), 'ProjectManager')
 const ProjectList = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/projectList.vue')), 'ProjectList')
 const ProjectSetting = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/projectSetting.vue')), 'ProjectSetting')
@@ -103,9 +108,34 @@ export default new Router({
               component: roleManagement,
             },
             {
+              path: '/menuManagement', // 菜单管理
+              name: 'menuManagement',
+              component: menuManagement,
+            },
+            {
               path: '/authManagement', // 权限管理
               name: 'authManagement',
               component: authManagement,
+            },
+            {
+              path: '/organizationChart', // 组织架构
+              name: 'organizationChart',
+              component: organizationChart,
+            },
+            {
+              path: '/dataBase', // 数据库字典
+              name: 'dataBase',
+              component: dataBase,
+            },
+            {
+              path: '/userCase', // 用例库
+              name: 'userCase',
+              component: userCase,
+            },
+            {
+              path: '/operationLog', // 操作日志
+              name: 'operationLog',
+              component: operationLog,
             },
           ]
         },

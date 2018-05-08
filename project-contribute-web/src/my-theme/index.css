@@ -67,6 +67,9 @@ ul,li{ list-style: none;}
 /* .ivu-select{ 
     width:149px;
 } */
+.sys-right-cont .ivu-select{ 
+    width:149px;
+}
 .ivu-modal-body .ivu-select{ 
     width:100%;
 }

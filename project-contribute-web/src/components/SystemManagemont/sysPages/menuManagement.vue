@@ -1,6 +1,6 @@
 <template>
     <div class="sys-right-wrap">
-        <div class="sys-title">数据库字典</div>
+        <div class="sys-title">菜单管理</div>
         <Form :model="formItem" :label-width="80" inline>
             <FormItem label="员工号">
                 <Input v-model="formItem.id" placeholder=""></Input>
