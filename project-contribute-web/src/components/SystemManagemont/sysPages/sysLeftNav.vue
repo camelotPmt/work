@@ -37,18 +37,18 @@
     </div>
 </template>
 <style scoped lang="less">
-    .sys-nav-cont{
+.sys-nav-cont{
+    height : 100%;
+    .ivu-menu{ 
+        width:100% !important;
         height:100%;
-        .ivu-menu{ 
-            width:100% !important;
-            height:100%;
-        }
-        .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
-            padding:0;
-            height:50px;
-            line-height:50px;
-        }
-        .iconfont{position: absolute; top:0; font-size:16px; left:20px;}
-        a{ display:block; padding-left:50px;}
     }
+    .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
+        padding:0;
+        height:50px;
+        line-height:50px;
+    }
+    .iconfont{position: absolute; top:0; font-size:16px; left:20px;}
+    a{ display:block; padding-left:50px;}
+}
 </style>
