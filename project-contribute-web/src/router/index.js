@@ -7,6 +7,8 @@ import Login from '@/components/Login'// 登录
 
 // import * as response from '@/util/response'
 // 引入组件
+const tuodong = r => require.ensure([], () => r(require('../components/tuodong.vue')), 'tuodong')
+
 const HomeIn = r => require.ensure([], () => r(require('../components/RegisterLogin/Home.vue')), 'HomeIn')
 const Message = r => require.ensure([], () => r(require('../components/RegisterLogin/MessageMail.vue')), 'Message')
 const PersonalCenter = r => require.ensure([], () => r(require('../components/RegisterLogin/PersonalCenter.vue')), 'PersonalCenter')
@@ -52,6 +54,11 @@ export default new Router({
           path: '/Home', // 首页
           name: 'HomeIndex',
           component: HomeIndex,
+        },
+        {
+          path: '/Home1', // 案例拖动
+          name: 'tuodong',
+          component: tuodong,
         },
         {
           path: '/PersonalCenter', // 个人中心
