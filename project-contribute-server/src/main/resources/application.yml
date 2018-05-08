@@ -1,6 +1,41 @@
 # server
 server:
+  name: pmt
   port: 9000
-#  contett-path: /peoject  # 项目根路径配置
+  contextPath: /pmt  # 项目根路径配置
+  compression:
+        enabled: true
+        mime-types: application/json,application/xml,text/html,text/xml,text/plain
+
+
+spring:
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/pmt?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+      username: camelot
+      password: Camelot!123
+      type: com.alibaba.druid.pool.DruidDataSource
+      filters: stat
+      maxActive: 50
+      initialSize: 6
+      maxWait: 300000
+      minIdle: 6
+      timeBetweenEvictionRunsMillis: 300000
+      minEvictableIdleTimeMillis: 600000
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+  mvc:
+      async:
+        request-timeout: 500000
+
+  profiles:
+      active: dev
+
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
 
 

@@ -1,0 +1,58 @@
+package com.camelot.pmt.config;
+
+import com.fasterxml.jackson.databind.JsonMappingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
+
+/**
+ * Created by daiyang on 2018/5/8.
+ */
+@ControllerAdvice
+public class ExceptionHandle {
+    private static final Logger log = LoggerFactory.getLogger(ExceptionHandle.class);
+
+    @ExceptionHandler({
+            SQLException.class, Exception.class, JsonMappingException.class})
+    final ResponseEntity<Object> handleControllerApiException(HttpServletRequest request, Throwable ex) {
+        HttpHeaders headers = new HttpHeaders();
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        if (ex instanceof HttpMessageNotReadableException) {
+            HttpMessageNotReadableException httpMessageNotReadableException = (HttpMessageNotReadableException) ex;
+            log.error("HTTP信息异常：%s", httpMessageNotReadableException);
+            return new ResponseEntity("HTTP信息异常：" + ex.getMessage(), headers, status);
+        }
+
+        if (ex instanceof MethodArgumentNotValidException) {
+            MethodArgumentNotValidException argumentNotValidException = (MethodArgumentNotValidException) ex;
+            log.error("参数校验异常：%s", argumentNotValidException);
+            return new ResponseEntity("参数校验异常：" + ex.getMessage(), headers, status);
+        }
+
+        if (ex instanceof SQLException) {
+            SQLException sqlException = (SQLException) ex;
+            log.error("SQL执行异常：%s", sqlException);
+            return new ResponseEntity("SQL执行异常：" + sqlException.getMessage(), headers, status);
+        }
+
+        // 业务逻辑异常
+        if (ex instanceof IllegalArgumentException) {
+            IllegalArgumentException illegalArgumentException = (IllegalArgumentException) ex;
+            log.error("业务异常： %s", illegalArgumentException);
+            return new ResponseEntity("业务异常：" + illegalArgumentException.getMessage(), headers, status);
+        }
+
+        Exception exception = (Exception) ex;
+        log.error("其他异常：%s", exception);
+        return new ResponseEntity<>("其他异常", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
