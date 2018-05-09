@@ -29,6 +29,13 @@
             </FormItem>
         </Form>
         <Table :columns="columns1" :data="source" height="340"></Table>
+        <quill-editor 
+        v-model="content" 
+        ref="myQuillEditor" 
+        :options="editorOption" 
+        @blur="onEditorBlur($event)" @focus="onEditorFocus($event)"
+        @change="onEditorChange($event)">
+        </quill-editor>
         <div class="page-break">
             <Page :total="Math.floor(size)" :current="Math.floor(index)" :page-size="Math.floor(rows)" @on-change="change"></Page>
         </div>
@@ -101,6 +108,8 @@ export default {
             rows:'10',
             size:'',
             addUser:false,
+            content:null,
+            editorOption:{},
             formItem: {
                 id:'',
                 name:'',
@@ -191,6 +200,12 @@ export default {
         this.getMuduleAList(); 
     },
     methods: {
+        onEditorBlur(){//失去焦点事件
+        },
+        onEditorFocus(){//获得焦点事件
+        },
+        onEditorChange(){//内容改变事件
+        },
         getMuduleAList(index, rows) { //获取用户列表
             var data = new FormData();
             // data.append()
