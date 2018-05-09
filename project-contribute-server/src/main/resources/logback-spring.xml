@@ -50,29 +50,7 @@
         </encoder>
     </appender>
 
-    <springProfile name="dev">
-        <logger name="org.springframework.web" level="INFO">
-            <appender-ref ref="console"/>
-        </logger>
-        <logger name="com.ibatis" level="DEBUG">
-            <appender-ref ref="console"/>
-        </logger>
-        <logger name="com.camelot.pmt" level="DEBUG">
-            <appender-ref ref="console"/>
-        </logger>
-    </springProfile>
 
-    <springProfile name="dev-test">
-        <logger name="org.springframework.web" level="INFO">
-            <appender-ref ref="console"/>
-        </logger>
-        <logger name="com.ibatis" level="DEBUG">
-            <appender-ref ref="console"/>
-        </logger>
-        <logger name="com.camelot.pmt" level="DEBUG">
-            <appender-ref ref="console"/>
-        </logger>
-    </springProfile>
 
     <springProfile name="stage">
         <logger name="org.springframework.web" level="INFO">

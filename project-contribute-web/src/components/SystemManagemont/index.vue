@@ -47,7 +47,8 @@ export default {
             width:84%;
             background:#fff;
             padding:20px;
-            min-height:500px;
+            height:600px;
+            overflow-y: auto;
             .ivu-select{ width:149px !important;}
         }
     }
