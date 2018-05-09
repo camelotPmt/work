@@ -6,14 +6,15 @@ server:
   compression:
         enabled: true
         mime-types: application/json,application/xml,text/html,text/xml,text/plain
-
+  tomcat:
+         uri-encoding: UTF-8
 
 spring:
   datasource:
       driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://172.21.127.81:3306/pmt?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
       username: camelot
-      password: Camelot!123
+      password: camelot!123
       type: com.alibaba.druid.pool.DruidDataSource
       filters: stat
       maxActive: 50
@@ -34,10 +35,26 @@ spring:
   profiles:
       active: dev
 
+  http:
+      encoding:
+              force: true
+              charset: UTF-8
+              enabled: true
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.camelot.pmt
   configuration:
     mapUnderscoreToCamelCase: true
 
+#JWT配置
+##认证名称
+jwt:
+   header: authorization
+##加密向量
+   secret: 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+##过期时间一天(秒)
+   expiration: 86400
+##Tokenu前缀
+   token:
+      head: Bearer
 
