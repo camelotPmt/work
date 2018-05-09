@@ -75,6 +75,7 @@ public class SysResource {
 
     /**
      * id
+     *
      * @return id id
      */
     public Integer getId() {
@@ -83,6 +84,7 @@ public class SysResource {
 
     /**
      * id
+     *
      * @param id id
      */
     public void setId(Integer id) {
@@ -91,6 +93,7 @@ public class SysResource {
 
     /**
      * 父ID
+     *
      * @return parent_id 父ID
      */
     public Integer getParentId() {
@@ -99,6 +102,7 @@ public class SysResource {
 
     /**
      * 父ID
+     *
      * @param parentId 父ID
      */
     public void setParentId(Integer parentId) {
@@ -107,6 +111,7 @@ public class SysResource {
 
     /**
      * 资源名称
+     *
      * @return text 资源名称
      */
     public String getText() {
@@ -115,6 +120,7 @@ public class SysResource {
 
     /**
      * 资源名称
+     *
      * @param text 资源名称
      */
     public void setText(String text) {
@@ -123,6 +129,7 @@ public class SysResource {
 
     /**
      * 资源路径
+     *
      * @return href 资源路径
      */
     public String getHref() {
@@ -131,6 +138,7 @@ public class SysResource {
 
     /**
      * 资源路径
+     *
      * @param href 资源路径
      */
     public void setHref(String href) {
@@ -139,6 +147,7 @@ public class SysResource {
 
     /**
      * 图标
+     *
      * @return iconCls 图标
      */
     public String getIconcls() {
@@ -147,6 +156,7 @@ public class SysResource {
 
     /**
      * 图标
+     *
      * @param iconcls 图标
      */
     public void setIconcls(String iconcls) {
@@ -155,6 +165,7 @@ public class SysResource {
 
     /**
      * 资源类型
+     *
      * @return type 资源类型
      */
     public Integer getType() {
@@ -163,6 +174,7 @@ public class SysResource {
 
     /**
      * 资源类型
+     *
      * @param type 资源类型
      */
     public void setType(Integer type) {
@@ -171,6 +183,7 @@ public class SysResource {
 
     /**
      * 权限标示
+     *
      * @return permission 权限标示
      */
     public String getPermission() {
@@ -179,6 +192,7 @@ public class SysResource {
 
     /**
      * 权限标示
+     *
      * @param permission 权限标示
      */
     public void setPermission(String permission) {
@@ -187,6 +201,7 @@ public class SysResource {
 
     /**
      * 排序
+     *
      * @return sort_no 排序
      */
     public Integer getSortNo() {
@@ -195,6 +210,7 @@ public class SysResource {
 
     /**
      * 排序
+     *
      * @param sortNo 排序
      */
     public void setSortNo(Integer sortNo) {
@@ -203,6 +219,7 @@ public class SysResource {
 
     /**
      * 显示标示 0-不显示 1-显示
+     *
      * @return is_show 显示标示 0-不显示 1-显示
      */
     public Integer getIsShow() {
@@ -211,6 +228,7 @@ public class SysResource {
 
     /**
      * 显示标示 0-不显示 1-显示
+     *
      * @param isShow 显示标示 0-不显示 1-显示
      */
     public void setIsShow(Integer isShow) {
@@ -219,6 +237,7 @@ public class SysResource {
 
     /**
      * 状态值 0-无效 1-有效
+     *
      * @return state 状态值 0-无效 1-有效
      */
     public Integer getState() {
@@ -227,6 +246,7 @@ public class SysResource {
 
     /**
      * 状态值 0-无效 1-有效
+     *
      * @param state 状态值 0-无效 1-有效
      */
     public void setState(Integer state) {
@@ -235,6 +255,7 @@ public class SysResource {
 
     /**
      * 创建人
+     *
      * @return create_by 创建人
      */
     public Integer getCreateBy() {
@@ -243,6 +264,7 @@ public class SysResource {
 
     /**
      * 创建人
+     *
      * @param createBy 创建人
      */
     public void setCreateBy(Integer createBy) {
@@ -251,6 +273,7 @@ public class SysResource {
 
     /**
      * 创建时间
+     *
      * @return create_time 创建时间
      */
     public Date getCreateTime() {
@@ -259,6 +282,7 @@ public class SysResource {
 
     /**
      * 创建时间
+     *
      * @param createTime 创建时间
      */
     public void setCreateTime(Date createTime) {
@@ -267,6 +291,7 @@ public class SysResource {
 
     /**
      * 修改人
+     *
      * @return update_by 修改人
      */
     public Integer getUpdateBy() {
@@ -275,6 +300,7 @@ public class SysResource {
 
     /**
      * 修改人
+     *
      * @param updateBy 修改人
      */
     public void setUpdateBy(Integer updateBy) {
@@ -283,6 +309,7 @@ public class SysResource {
 
     /**
      * 修改时间
+     *
      * @return update_time 修改时间
      */
     public Date getUpdateTime() {
@@ -291,6 +318,7 @@ public class SysResource {
 
     /**
      * 修改时间
+     *
      * @param updateTime 修改时间
      */
     public void setUpdateTime(Date updateTime) {

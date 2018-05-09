@@ -51,7 +51,6 @@
     </appender>
 
 
-
     <springProfile name="stage">
         <logger name="org.springframework.web" level="INFO">
             <appender-ref ref="project-contribute-server-stage"/>

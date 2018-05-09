@@ -50,6 +50,7 @@ public class SysDictValue {
 
     /**
      * 主键ID
+     *
      * @return id 主键ID
      */
     public Integer getId() {
@@ -58,6 +59,7 @@ public class SysDictValue {
 
     /**
      * 主键ID
+     *
      * @param id 主键ID
      */
     public void setId(Integer id) {
@@ -66,6 +68,7 @@ public class SysDictValue {
 
     /**
      * 类型编码
+     *
      * @return type_code 类型编码
      */
     public String getTypeCode() {
@@ -74,6 +77,7 @@ public class SysDictValue {
 
     /**
      * 类型编码
+     *
      * @param typeCode 类型编码
      */
     public void setTypeCode(String typeCode) {
@@ -82,6 +86,7 @@ public class SysDictValue {
 
     /**
      * 值名称
+     *
      * @return value_name 值名称
      */
     public String getValueName() {
@@ -90,6 +95,7 @@ public class SysDictValue {
 
     /**
      * 值名称
+     *
      * @param valueName 值名称
      */
     public void setValueName(String valueName) {
@@ -98,6 +104,7 @@ public class SysDictValue {
 
     /**
      * 值编码
+     *
      * @return value_code 值编码
      */
     public String getValueCode() {
@@ -106,6 +113,7 @@ public class SysDictValue {
 
     /**
      * 值编码
+     *
      * @param valueCode 值编码
      */
     public void setValueCode(String valueCode) {
@@ -114,6 +122,7 @@ public class SysDictValue {
 
     /**
      * 状态值 0-无效 1-有效
+     *
      * @return state 状态值 0-无效 1-有效
      */
     public Integer getState() {
@@ -122,6 +131,7 @@ public class SysDictValue {
 
     /**
      * 状态值 0-无效 1-有效
+     *
      * @param state 状态值 0-无效 1-有效
      */
     public void setState(Integer state) {
@@ -130,6 +140,7 @@ public class SysDictValue {
 
     /**
      * 创建人
+     *
      * @return create_by 创建人
      */
     public Integer getCreateBy() {
@@ -138,6 +149,7 @@ public class SysDictValue {
 
     /**
      * 创建人
+     *
      * @param createBy 创建人
      */
     public void setCreateBy(Integer createBy) {
@@ -146,6 +158,7 @@ public class SysDictValue {
 
     /**
      * 创建时间
+     *
      * @return create_time 创建时间
      */
     public Date getCreateTime() {
@@ -154,6 +167,7 @@ public class SysDictValue {
 
     /**
      * 创建时间
+     *
      * @param createTime 创建时间
      */
     public void setCreateTime(Date createTime) {
@@ -162,6 +176,7 @@ public class SysDictValue {
 
     /**
      * 修改人
+     *
      * @return update_by 修改人
      */
     public Integer getUpdateBy() {
@@ -170,6 +185,7 @@ public class SysDictValue {
 
     /**
      * 修改人
+     *
      * @param updateBy 修改人
      */
     public void setUpdateBy(Integer updateBy) {
@@ -178,6 +194,7 @@ public class SysDictValue {
 
     /**
      * 修改时间
+     *
      * @return update_time 修改时间
      */
     public Date getUpdateTime() {
@@ -186,6 +203,7 @@ public class SysDictValue {
 
     /**
      * 修改时间
+     *
      * @param updateTime 修改时间
      */
     public void setUpdateTime(Date updateTime) {

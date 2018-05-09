@@ -50,6 +50,7 @@ public class LogUserLogin {
 
     /**
      * id
+     *
      * @return id id
      */
     public Integer getId() {
@@ -58,6 +59,7 @@ public class LogUserLogin {
 
     /**
      * id
+     *
      * @param id id
      */
     public void setId(Integer id) {
@@ -66,6 +68,7 @@ public class LogUserLogin {
 
     /**
      * 登录用户名称
+     *
      * @return login_user 登录用户名称
      */
     public String getLoginUser() {
@@ -74,6 +77,7 @@ public class LogUserLogin {
 
     /**
      * 登录用户名称
+     *
      * @param loginUser 登录用户名称
      */
     public void setLoginUser(String loginUser) {
@@ -82,6 +86,7 @@ public class LogUserLogin {
 
     /**
      * 登录时间
+     *
      * @return login_time 登录时间
      */
     public Date getLoginTime() {
@@ -90,6 +95,7 @@ public class LogUserLogin {
 
     /**
      * 登录时间
+     *
      * @param loginTime 登录时间
      */
     public void setLoginTime(Date loginTime) {
@@ -98,6 +104,7 @@ public class LogUserLogin {
 
     /**
      * 登录IP
+     *
      * @return login_ip 登录IP
      */
     public String getLoginIp() {
@@ -106,6 +113,7 @@ public class LogUserLogin {
 
     /**
      * 登录IP
+     *
      * @param loginIp 登录IP
      */
     public void setLoginIp(String loginIp) {
@@ -114,6 +122,7 @@ public class LogUserLogin {
 
     /**
      * 状态值 0-无效 1-有效
+     *
      * @return state 状态值 0-无效 1-有效
      */
     public Integer getState() {
@@ -122,6 +131,7 @@ public class LogUserLogin {
 
     /**
      * 状态值 0-无效 1-有效
+     *
      * @param state 状态值 0-无效 1-有效
      */
     public void setState(Integer state) {
@@ -130,6 +140,7 @@ public class LogUserLogin {
 
     /**
      * 创建人
+     *
      * @return created_by 创建人
      */
     public Integer getCreatedBy() {
@@ -138,6 +149,7 @@ public class LogUserLogin {
 
     /**
      * 创建人
+     *
      * @param createdBy 创建人
      */
     public void setCreatedBy(Integer createdBy) {
@@ -146,6 +158,7 @@ public class LogUserLogin {
 
     /**
      * 创建时间
+     *
      * @return created_time 创建时间
      */
     public Date getCreatedTime() {
@@ -154,6 +167,7 @@ public class LogUserLogin {
 
     /**
      * 创建时间
+     *
      * @param createdTime 创建时间
      */
     public void setCreatedTime(Date createdTime) {
@@ -162,6 +176,7 @@ public class LogUserLogin {
 
     /**
      * 修改人
+     *
      * @return updated_by 修改人
      */
     public Integer getUpdatedBy() {
@@ -170,6 +185,7 @@ public class LogUserLogin {
 
     /**
      * 修改人
+     *
      * @param updatedBy 修改人
      */
     public void setUpdatedBy(Integer updatedBy) {
@@ -178,6 +194,7 @@ public class LogUserLogin {
 
     /**
      * 修改时间
+     *
      * @return updated_time 修改时间
      */
     public Date getUpdatedTime() {
@@ -186,6 +203,7 @@ public class LogUserLogin {
 
     /**
      * 修改时间
+     *
      * @param updatedTime 修改时间
      */
     public void setUpdatedTime(Date updatedTime) {

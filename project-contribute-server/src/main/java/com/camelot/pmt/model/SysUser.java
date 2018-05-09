@@ -65,6 +65,7 @@ public class SysUser {
 
     /**
      * 主键ID
+     *
      * @return id 主键ID
      */
     public Integer getId() {
@@ -73,6 +74,7 @@ public class SysUser {
 
     /**
      * 主键ID
+     *
      * @param id 主键ID
      */
     public void setId(Integer id) {
@@ -81,6 +83,7 @@ public class SysUser {
 
     /**
      * 用户名
+     *
      * @return user_name 用户名
      */
     public String getUserName() {
@@ -89,6 +92,7 @@ public class SysUser {
 
     /**
      * 用户名
+     *
      * @param userName 用户名
      */
     public void setUserName(String userName) {
@@ -97,6 +101,7 @@ public class SysUser {
 
     /**
      * 真实名
+     *
      * @return real_name 真实名
      */
     public String getRealName() {
@@ -105,6 +110,7 @@ public class SysUser {
 
     /**
      * 真实名
+     *
      * @param realName 真实名
      */
     public void setRealName(String realName) {
@@ -113,6 +119,7 @@ public class SysUser {
 
     /**
      * 密码
+     *
      * @return password 密码
      */
     public String getPassword() {
@@ -121,6 +128,7 @@ public class SysUser {
 
     /**
      * 密码
+     *
      * @param password 密码
      */
     public void setPassword(String password) {
@@ -129,6 +137,7 @@ public class SysUser {
 
     /**
      * 电子邮件
+     *
      * @return email 电子邮件
      */
     public String getEmail() {
@@ -137,6 +146,7 @@ public class SysUser {
 
     /**
      * 电子邮件
+     *
      * @param email 电子邮件
      */
     public void setEmail(String email) {
@@ -145,6 +155,7 @@ public class SysUser {
 
     /**
      * 电话
+     *
      * @return tel 电话
      */
     public String getTel() {
@@ -153,6 +164,7 @@ public class SysUser {
 
     /**
      * 电话
+     *
      * @param tel 电话
      */
     public void setTel(String tel) {
@@ -161,6 +173,7 @@ public class SysUser {
 
     /**
      * 描述/备注
+     *
      * @return user_desc 描述/备注
      */
     public String getUserDesc() {
@@ -169,6 +182,7 @@ public class SysUser {
 
     /**
      * 描述/备注
+     *
      * @param userDesc 描述/备注
      */
     public void setUserDesc(String userDesc) {
@@ -177,6 +191,7 @@ public class SysUser {
 
     /**
      * 状态值 0-无效 1-有效
+     *
      * @return state 状态值 0-无效 1-有效
      */
     public Integer getState() {
@@ -185,6 +200,7 @@ public class SysUser {
 
     /**
      * 状态值 0-无效 1-有效
+     *
      * @param state 状态值 0-无效 1-有效
      */
     public void setState(Integer state) {
@@ -193,6 +209,7 @@ public class SysUser {
 
     /**
      * 创建人
+     *
      * @return create_by 创建人
      */
     public Integer getCreateBy() {
@@ -201,6 +218,7 @@ public class SysUser {
 
     /**
      * 创建人
+     *
      * @param createBy 创建人
      */
     public void setCreateBy(Integer createBy) {
@@ -209,6 +227,7 @@ public class SysUser {
 
     /**
      * 创建时间
+     *
      * @return create_time 创建时间
      */
     public Date getCreateTime() {
@@ -217,6 +236,7 @@ public class SysUser {
 
     /**
      * 创建时间
+     *
      * @param createTime 创建时间
      */
     public void setCreateTime(Date createTime) {
@@ -225,6 +245,7 @@ public class SysUser {
 
     /**
      * 修改人
+     *
      * @return update_by 修改人
      */
     public Integer getUpdateBy() {
@@ -233,6 +254,7 @@ public class SysUser {
 
     /**
      * 修改人
+     *
      * @param updateBy 修改人
      */
     public void setUpdateBy(Integer updateBy) {
@@ -241,6 +263,7 @@ public class SysUser {
 
     /**
      * 修改时间
+     *
      * @return update_time 修改时间
      */
     public Date getUpdateTime() {
@@ -249,6 +272,7 @@ public class SysUser {
 
     /**
      * 修改时间
+     *
      * @param updateTime 修改时间
      */
     public void setUpdateTime(Date updateTime) {

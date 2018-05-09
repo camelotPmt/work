@@ -45,6 +45,7 @@ public class SysRole {
 
     /**
      * id
+     *
      * @return id id
      */
     public Integer getId() {
@@ -53,6 +54,7 @@ public class SysRole {
 
     /**
      * id
+     *
      * @param id id
      */
     public void setId(Integer id) {
@@ -61,6 +63,7 @@ public class SysRole {
 
     /**
      * 角色名称
+     *
      * @return role_name 角色名称
      */
     public String getRoleName() {
@@ -69,6 +72,7 @@ public class SysRole {
 
     /**
      * 角色名称
+     *
      * @param roleName 角色名称
      */
     public void setRoleName(String roleName) {
@@ -77,6 +81,7 @@ public class SysRole {
 
     /**
      * 角色描述
+     *
      * @return role_desc 角色描述
      */
     public String getRoleDesc() {
@@ -85,6 +90,7 @@ public class SysRole {
 
     /**
      * 角色描述
+     *
      * @param roleDesc 角色描述
      */
     public void setRoleDesc(String roleDesc) {
@@ -93,6 +99,7 @@ public class SysRole {
 
     /**
      * 状态值 0-无效 1-有效
+     *
      * @return state 状态值 0-无效 1-有效
      */
     public Integer getState() {
@@ -101,6 +108,7 @@ public class SysRole {
 
     /**
      * 状态值 0-无效 1-有效
+     *
      * @param state 状态值 0-无效 1-有效
      */
     public void setState(Integer state) {
@@ -109,6 +117,7 @@ public class SysRole {
 
     /**
      * 创建人
+     *
      * @return created_by 创建人
      */
     public Integer getCreatedBy() {
@@ -117,6 +126,7 @@ public class SysRole {
 
     /**
      * 创建人
+     *
      * @param createdBy 创建人
      */
     public void setCreatedBy(Integer createdBy) {
@@ -125,6 +135,7 @@ public class SysRole {
 
     /**
      * 创建时间
+     *
      * @return created_time 创建时间
      */
     public Date getCreatedTime() {
@@ -133,6 +144,7 @@ public class SysRole {
 
     /**
      * 创建时间
+     *
      * @param createdTime 创建时间
      */
     public void setCreatedTime(Date createdTime) {
@@ -141,6 +153,7 @@ public class SysRole {
 
     /**
      * 修改人
+     *
      * @return updated_by 修改人
      */
     public Integer getUpdatedBy() {
@@ -149,6 +162,7 @@ public class SysRole {
 
     /**
      * 修改人
+     *
      * @param updatedBy 修改人
      */
     public void setUpdatedBy(Integer updatedBy) {
@@ -157,6 +171,7 @@ public class SysRole {
 
     /**
      * 修改时间
+     *
      * @return updated_time 修改时间
      */
     public Date getUpdatedTime() {
@@ -165,6 +180,7 @@ public class SysRole {
 
     /**
      * 修改时间
+     *
      * @param updatedTime 修改时间
      */
     public void setUpdatedTime(Date updatedTime) {

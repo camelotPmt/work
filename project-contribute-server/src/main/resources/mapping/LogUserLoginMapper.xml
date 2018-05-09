@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.camelot.pmt.mapper.LogUserLoginMapper" >
-  <resultMap id="BaseResultMap" type="com.camelot.pmt.model.LogUserLogin" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="login_user" property="loginUser" jdbcType="VARCHAR" />
-    <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
-    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
-    <result column="state" property="state" jdbcType="INTEGER" />
-    <result column="created_by" property="createdBy" jdbcType="INTEGER" />
-    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
-    <result column="updated_by" property="updatedBy" jdbcType="INTEGER" />
-    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.camelot.pmt.mapper.LogUserLoginMapper">
+    <resultMap id="BaseResultMap" type="com.camelot.pmt.model.LogUserLogin">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="login_user" property="loginUser" jdbcType="VARCHAR"/>
+        <result column="login_time" property="loginTime" jdbcType="TIMESTAMP"/>
+        <result column="login_ip" property="loginIp" jdbcType="VARCHAR"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+        <result column="created_by" property="createdBy" jdbcType="INTEGER"/>
+        <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
+        <result column="updated_by" property="updatedBy" jdbcType="INTEGER"/>
+        <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, login_user, login_time, login_ip, state, created_by, created_time, updated_by, 
     updated_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from log_user_login
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from log_user_login
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from log_user_login
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.camelot.pmt.model.LogUserLogin" >
+    <insert id="insert" parameterType="com.camelot.pmt.model.LogUserLogin">
     insert into log_user_login (id, login_user, login_time, 
       login_ip, state, created_by, 
       created_time, updated_by, updated_time
@@ -36,98 +36,98 @@
       #{createdTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=INTEGER}, #{updatedTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.camelot.pmt.model.LogUserLogin" >
-    insert into log_user_login
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="loginUser != null" >
-        login_user,
-      </if>
-      <if test="loginTime != null" >
-        login_time,
-      </if>
-      <if test="loginIp != null" >
-        login_ip,
-      </if>
-      <if test="state != null" >
-        state,
-      </if>
-      <if test="createdBy != null" >
-        created_by,
-      </if>
-      <if test="createdTime != null" >
-        created_time,
-      </if>
-      <if test="updatedBy != null" >
-        updated_by,
-      </if>
-      <if test="updatedTime != null" >
-        updated_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="loginUser != null" >
-        #{loginUser,jdbcType=VARCHAR},
-      </if>
-      <if test="loginTime != null" >
-        #{loginTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="loginIp != null" >
-        #{loginIp,jdbcType=VARCHAR},
-      </if>
-      <if test="state != null" >
-        #{state,jdbcType=INTEGER},
-      </if>
-      <if test="createdBy != null" >
-        #{createdBy,jdbcType=INTEGER},
-      </if>
-      <if test="createdTime != null" >
-        #{createdTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatedBy != null" >
-        #{updatedBy,jdbcType=INTEGER},
-      </if>
-      <if test="updatedTime != null" >
-        #{updatedTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.camelot.pmt.model.LogUserLogin" >
-    update log_user_login
-    <set >
-      <if test="loginUser != null" >
-        login_user = #{loginUser,jdbcType=VARCHAR},
-      </if>
-      <if test="loginTime != null" >
-        login_time = #{loginTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="loginIp != null" >
-        login_ip = #{loginIp,jdbcType=VARCHAR},
-      </if>
-      <if test="state != null" >
-        state = #{state,jdbcType=INTEGER},
-      </if>
-      <if test="createdBy != null" >
-        created_by = #{createdBy,jdbcType=INTEGER},
-      </if>
-      <if test="createdTime != null" >
-        created_time = #{createdTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatedBy != null" >
-        updated_by = #{updatedBy,jdbcType=INTEGER},
-      </if>
-      <if test="updatedTime != null" >
-        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.camelot.pmt.model.LogUserLogin" >
+    <insert id="insertSelective" parameterType="com.camelot.pmt.model.LogUserLogin">
+        insert into log_user_login
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="loginUser != null">
+                login_user,
+            </if>
+            <if test="loginTime != null">
+                login_time,
+            </if>
+            <if test="loginIp != null">
+                login_ip,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="createdBy != null">
+                created_by,
+            </if>
+            <if test="createdTime != null">
+                created_time,
+            </if>
+            <if test="updatedBy != null">
+                updated_by,
+            </if>
+            <if test="updatedTime != null">
+                updated_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="loginUser != null">
+                #{loginUser,jdbcType=VARCHAR},
+            </if>
+            <if test="loginTime != null">
+                #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginIp != null">
+                #{loginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=INTEGER},
+            </if>
+            <if test="createdBy != null">
+                #{createdBy,jdbcType=INTEGER},
+            </if>
+            <if test="createdTime != null">
+                #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedBy != null">
+                #{updatedBy,jdbcType=INTEGER},
+            </if>
+            <if test="updatedTime != null">
+                #{updatedTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.camelot.pmt.model.LogUserLogin">
+        update log_user_login
+        <set>
+            <if test="loginUser != null">
+                login_user = #{loginUser,jdbcType=VARCHAR},
+            </if>
+            <if test="loginTime != null">
+                login_time = #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginIp != null">
+                login_ip = #{loginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=INTEGER},
+            </if>
+            <if test="createdBy != null">
+                created_by = #{createdBy,jdbcType=INTEGER},
+            </if>
+            <if test="createdTime != null">
+                created_time = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedBy != null">
+                updated_by = #{updatedBy,jdbcType=INTEGER},
+            </if>
+            <if test="updatedTime != null">
+                updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.camelot.pmt.model.LogUserLogin">
     update log_user_login
     set login_user = #{loginUser,jdbcType=VARCHAR},
       login_time = #{loginTime,jdbcType=TIMESTAMP},
