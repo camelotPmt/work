@@ -99,7 +99,7 @@ export default new Router({
           children: [
             {
               path: '/systemManager', // 用户管理
-              name: 'userManagement',
+              name: 'systemManager', // 为解决刷新，active状态回到第一个，默认name和path值保持一致
               component: userManagement,
             },
             {
