@@ -2,44 +2,39 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import HomeIndex from '@/components/RegisterLogin/Home'// 首页
-import Login from '@/components/Login'// 登录
 
 // import * as response from '@/util/response'
 // 引入组件
-const tuodong = r => require.ensure([], () => r(require('../components/tuodong.vue')), 'tuodong')
-
-const HomeIn = r => require.ensure([], () => r(require('../components/RegisterLogin/Home.vue')), 'HomeIn')
-const Message = r => require.ensure([], () => r(require('../components/RegisterLogin/MessageMail.vue')), 'Message')
-const PersonalCenter = r => require.ensure([], () => r(require('../components/RegisterLogin/PersonalCenter.vue')), 'PersonalCenter')
-const PersonalForm = r => require.ensure([], () => r(require('../components/RegisterLogin/personalCenterD/personalForm.vue')), 'LeftNav')
-const EditPassword = r => require.ensure([], () => r(require('../components/RegisterLogin/personalCenterD/editPassword.vue')), 'EditPassword')
-const TaskManager = r => require.ensure([], () => r(require('../components/RegisterLogin/personalCenterD/taskManager.vue')), 'TaskManager')
-const systemManager = r => require.ensure([], () => r(require('../components/SystemManagemont/index.vue')), 'TaskManager')
-const userManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/userManagement.vue')), 'userManagement')
-const roleManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/roleManagement.vue')), 'roleManagement')
-const menuManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/menuManagement.vue')), 'menuManagement')
-const organizationChart = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/organizationChart.vue')), 'organizationChart')
-const dataBase = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/dataBase.vue')), 'dataBase')
-const userCase = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/UseCaseLibrary.vue')), 'userCase')
-const operationLog = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/operationLog.vue')), 'operationLog')
-
-const authManagement = r => require.ensure([], () => r(require('../components/SystemManagemont/sysPages/authorityManagement.vue')), 'authManagement')
-const ProjectManager = r => require.ensure([], () => r(require('../components/ProjectManagemont/index.vue')), 'ProjectManager')
-const ProjectList = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/projectList.vue')), 'ProjectList')
-const ProjectSetting = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/projectSetting.vue')), 'ProjectSetting')
-const ItemInfor = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/ProjectSetPages/itemInfor.vue')), 'ItemInfor')
-const TaskList = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/taskList.vue')), 'TaskList')
-const TaskIndex = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/TaskListPages/taskIndex.vue')), 'TaskIndex')
-const versionIndex = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/TaskListPages/versionIndex.vue')), 'versionIndex')
-const productIndex = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/TaskListPages/productIndex.vue')), 'productIndex')
-const memberIndex = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/TaskListPages/memberIndex.vue')), 'memberIndex')
-const testIndex = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/TaskListPages/testIndex.vue')), 'testIndex')
-const SetRember = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/ProjectSetPages/setRember.vue')), 'SetRember')
-const TaskPermissions = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/ProjectSetPages/taskPermissions.vue')), 'TaskPermissions')
-const DemandIndex = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/TaskListPages/demandList.vue')), 'DemandIndex')
-
-// const pJ = r => require.ensure([], () => r(require('../components/ProjectManagemont/ProjectList/ProjectSetPages/pj.vue')), 'pJ')
+export const tuodong = require('../components/tuodong.vue').default
+export const Login = require('../components/Login.vue').default
+export const HomeIndex = require('../components/RegisterLogin/Home.vue').default
+export const Message = require('../components/RegisterLogin/MessageMail.vue').default
+export const PersonalCenter = require('../components/RegisterLogin/PersonalCenter.vue').default
+export const PersonalForm = require('../components/RegisterLogin/personalCenterD/personalForm.vue').default
+export const EditPassword = require('../components/RegisterLogin/personalCenterD/editPassword.vue').default
+export const TaskManager = require('../components/RegisterLogin/personalCenterD/taskManager.vue').default
+export const systemManager = require('../components/SystemManagemont/index.vue').default
+export const userManagement = require('../components/SystemManagemont/sysPages/userManagement.vue').default
+export const roleManagement = require('../components/SystemManagemont/sysPages/roleManagement.vue').default
+export const menuManagement = require('../components/SystemManagemont/sysPages/menuManagement.vue').default
+export const organizationChart = require('../components/SystemManagemont/sysPages/organizationChart.vue').default
+export const dataBase = require('../components/SystemManagemont/sysPages/dataBase.vue').default
+export const userCase = require('../components/SystemManagemont/sysPages/UseCaseLibrary.vue').default
+export const operationLog = require('../components/SystemManagemont/sysPages/operationLog.vue').default
+export const authManagement = require('../components/SystemManagemont/sysPages/authorityManagement.vue').default
+export const ProjectManager = require('../components/ProjectManagemont/index.vue').default
+export const ProjectList = require('../components/ProjectManagemont/ProjectList/projectList.vue').default
+export const ProjectSetting = require('../components/ProjectManagemont/ProjectList/projectSetting.vue').default
+export const ItemInfor = require('../components/ProjectManagemont/ProjectList/ProjectSetPages/itemInfor.vue').default
+export const TaskList = require('../components/ProjectManagemont/ProjectList/taskList.vue').default
+export const TaskIndex = require('../components/ProjectManagemont/ProjectList/TaskListPages/taskIndex.vue').default
+export const versionIndex = require('../components/ProjectManagemont/ProjectList/TaskListPages/versionIndex.vue').default
+export const productIndex = require('../components/ProjectManagemont/ProjectList/TaskListPages/productIndex.vue').default
+export const memberIndex = require('../components/ProjectManagemont/ProjectList/TaskListPages/memberIndex.vue').default
+export const testIndex = require('../components/ProjectManagemont/ProjectList/TaskListPages/testIndex.vue').default
+export const SetRember = require('../components/ProjectManagemont/ProjectList/ProjectSetPages/setRember.vue').default
+export const TaskPermissions = require('../components/ProjectManagemont/ProjectList/ProjectSetPages/taskPermissions.vue').default
+export const DemandIndex = require('../components/ProjectManagemont/ProjectList/TaskListPages/demandList.vue').default
 
 // 注册路由
 Vue.use(Router)
@@ -210,11 +205,6 @@ export default new Router({
             }
           ]
         },
-        // {
-        //   path: '/pj',//项目信息
-        //   name: 'pJ',
-        //   component: pJ,
-        // }
       ]
 
     },
