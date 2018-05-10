@@ -27,6 +27,7 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
 
     @Value("${swagger.host}")
     private String swaggerHost;
+
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("pmt")
@@ -62,6 +63,7 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
 
     /**
      * swagger ui资源映射
+     *
      * @param registry
      */
     @Override
@@ -74,10 +76,11 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
 
     /**
      * swagger-ui.html路径映射，浏览器中使用/api-docs访问
+     *
      * @param registry
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController("/api-docs","/swagger-ui.html");
+        registry.addRedirectViewController("/api-docs", "/swagger-ui.html");
     }
 }

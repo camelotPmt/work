@@ -2,7 +2,6 @@ package com.camelot.pmt.config;
 
 
 import com.camelot.pmt.shiro.StatelessDefaultSubjectFactory;
-import com.camelot.pmt.shiro.filter.JcaptchaValidateFilter;
 import com.camelot.pmt.shiro.filter.JwtAuthenticationFilter;
 import com.camelot.pmt.shiro.jwt.JwtRealm;
 import org.apache.shiro.SecurityUtils;
@@ -35,6 +34,7 @@ public class ShiroConfig {
 
     /**
      * 自定义Realm
+     *
      * @return
      */
     @Bean(name = "jwtRealm")
@@ -58,22 +58,22 @@ public class ShiroConfig {
 
     @Bean("shiroFilter")
     @DependsOn("securityManager")
-    public ShiroFilterFactoryBean shiroFilter(DefaultSecurityManager securityManager){
-        ShiroFilterFactoryBean shiroFilter  = new ShiroFilterFactoryBean();
+    public ShiroFilterFactoryBean shiroFilter(DefaultSecurityManager securityManager) {
+        ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
         // 拦截器
-        Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
+        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 
         // 允许用户匿名访问/login(登录接口)
         filterChainDefinitionMap.put("/login", "anon");
 
         // 验证码允许匿名访问
-        filterChainDefinitionMap.put("/captcha","anon");
-        filterChainDefinitionMap.put("/api-docs","anon");
-        filterChainDefinitionMap.put("/v2/api-docs","anon");
-        filterChainDefinitionMap.put("/swagger-ui.html","anon");
-        filterChainDefinitionMap.put("/webjars/**","anon");
-        filterChainDefinitionMap.put("/swagger-resources/**","anon");
+        filterChainDefinitionMap.put("/captcha", "anon");
+        filterChainDefinitionMap.put("/api-docs", "anon");
+        filterChainDefinitionMap.put("/v2/api-docs", "anon");
+        filterChainDefinitionMap.put("/swagger-ui.html", "anon");
+        filterChainDefinitionMap.put("/webjars/**", "anon");
+        filterChainDefinitionMap.put("/swagger-resources/**", "anon");
 
         filterChainDefinitionMap.put("/**", "jwt");
 
@@ -82,8 +82,8 @@ public class ShiroConfig {
         shiroFilter.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         Map<String, Filter> filters = new LinkedHashMap<>();
-        filters.put("jwt",new JwtAuthenticationFilter());
-        filters.put("jcaptchaValidate",new JcaptchaValidateFilter());
+        filters.put("jwt", new JwtAuthenticationFilter());
+        //filters.put("jcaptchaValidate", new JcaptchaValidateFilter());
 
         shiroFilter.setFilters(filters);
 
@@ -92,21 +92,23 @@ public class ShiroConfig {
 
     /**
      * Subject工厂管理器
+     *
      * @return
      */
     @Bean
-    public DefaultWebSubjectFactory subjectFactory(){
+    public DefaultWebSubjectFactory subjectFactory() {
         DefaultWebSubjectFactory subjectFactory = new StatelessDefaultSubjectFactory();
         return subjectFactory;
     }
 
     /**
      * 安全管理器
+     *
      * @return
      */
     @Bean("securityManager")
-    public DefaultWebSecurityManager securityManager(){
-        DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
+    public DefaultWebSecurityManager securityManager() {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 
         securityManager.setRealm(jwtRealm());
 
@@ -115,7 +117,7 @@ public class ShiroConfig {
         securityManager.setSessionManager(sessionManager());
 
         // 关闭session存储，禁用Session作为存储策略的实现，但它没有完全地禁用Session所以需要配合SubjectFactory中的context.setSessionCreationEnabled(false)
-        ((DefaultSessionStorageEvaluator) ((DefaultSubjectDAO)securityManager.getSubjectDAO()).getSessionStorageEvaluator()).setSessionStorageEnabled(false);
+        ((DefaultSessionStorageEvaluator) ((DefaultSubjectDAO) securityManager.getSubjectDAO()).getSessionStorageEvaluator()).setSessionStorageEnabled(false);
 
         // 用户授权/认证信息Cache, 后期可采用EhCache缓存
         // securityManager.setCacheManager(cacheManager());
@@ -126,17 +128,19 @@ public class ShiroConfig {
 
     /**
      * 会话管理器
+     *
      * @return
      */
-    public DefaultSessionManager sessionManager(){
-        DefaultSessionManager sessionManager =new DefaultSessionManager();
+    public DefaultSessionManager sessionManager() {
+        DefaultSessionManager sessionManager = new DefaultSessionManager();
         // 关闭session定时检查，通过setSessionValidationSchedulerEnabled禁用掉会话调度器
         sessionManager.setSessionValidationSchedulerEnabled(false);
-        return  sessionManager;
+        return sessionManager;
     }
 
     /**
      * 用户授权信息缓存
+     *
      * @return
      */
     @Bean
@@ -148,11 +152,12 @@ public class ShiroConfig {
 
     /**
      * 凭证匹配器
+     *
      * @return
      */
     @Bean
-    public CredentialsMatcher credentialsMatcher(){
-        HashedCredentialsMatcher hashedCredentialsMatcher =new HashedCredentialsMatcher();
+    public CredentialsMatcher credentialsMatcher() {
+        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
         hashedCredentialsMatcher.setHashAlgorithmName("MD5");
         hashedCredentialsMatcher.setHashIterations(1024);
         hashedCredentialsMatcher.setStoredCredentialsHexEncoded(true);
@@ -161,6 +166,7 @@ public class ShiroConfig {
 
     /**
      * Shiro生命周期处理器
+     *
      * @return
      */
     @Bean(name = "lifecycleBeanPostProcessor")
@@ -170,18 +176,19 @@ public class ShiroConfig {
 
     /**
      * 开启Shiro注解(如@RequiresRoles,@RequiresPermissions)
+     *
      * @return
      */
     @Bean
     @DependsOn("lifecycleBeanPostProcessor")
-    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator(){
+    public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
         DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
         advisorAutoProxyCreator.setProxyTargetClass(true);
         return advisorAutoProxyCreator;
     }
 
     @Bean
-    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(){
+    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor() {
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager());
         return authorizationAttributeSourceAdvisor;
