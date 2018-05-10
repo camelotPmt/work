@@ -1,10 +1,11 @@
 package com.camelot.pmt.shiro.jwt;
 
+import org.apache.shiro.authc.AuthenticationToken;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.shiro.authc.AuthenticationToken;
 
 @Data
 @Builder
@@ -12,18 +13,23 @@ import org.apache.shiro.authc.AuthenticationToken;
 @NoArgsConstructor
 public class JwtToken implements AuthenticationToken {
 
-  private String principal;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-  private String token;
+    private String principal;
 
-  @Override
-  public String getPrincipal() {
-    return principal;
-  }
+    private String token;
 
-  @Override
-  public Object getCredentials() {
-    return token;
-  }
+    @Override
+    public String getPrincipal() {
+        return principal;
+    }
+
+    @Override
+    public Object getCredentials() {
+        return token;
+    }
 
 }
