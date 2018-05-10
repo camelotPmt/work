@@ -46,7 +46,6 @@ public class JwtRealm extends AuthorizingRealm {
 
         // 从token中获取用户名
         String username = tokenUtil.getUsernameFromToken(token);
-
         // 根据用户名查询数据库
 
         SysUser user = new SysUser();
@@ -60,9 +59,10 @@ public class JwtRealm extends AuthorizingRealm {
         }
 
         // 用户被禁用
-        if(user.getState()==0){
+       /*if(user.getState()==0){
+
             throw new LockedAccountException();
-        }
+        }*/
 
         try {
             return new SimpleAuthenticationInfo(
@@ -71,6 +71,7 @@ public class JwtRealm extends AuthorizingRealm {
                     getName()
             );
         } catch (Exception e) {
+            e.printStackTrace();
             throw new AuthenticationException(e);
         }
     }
