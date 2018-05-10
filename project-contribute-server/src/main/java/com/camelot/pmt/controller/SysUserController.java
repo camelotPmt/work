@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.camelot.pmt.model.SysUser;
 import com.camelot.pmt.service.SysUserService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
@@ -23,6 +24,7 @@ import io.swagger.annotations.ApiParam;
  */
 @RestController
 @RequestMapping("/sysUser")
+@Api(description = "用户服务")
 public class SysUserController {
 
     private static final Logger logger = LoggerFactory.getLogger(SysUserController.class);
@@ -34,20 +36,21 @@ public class SysUserController {
      * 
      * @param id
      * @return
+     * @throws Exception
      */
     @GetMapping("/selectByPrimaryKey")
-    @ApiOperation(value = "根据id查询用户", notes = "根据id查询用户", tags = { "sysUser-Service" })
-    public ResponseEntity<SysUser> selectByPrimaryKey(
-            @ApiParam(value = "id", required = true) @RequestParam Integer id) {
+    @ApiOperation(value = "根据id查询用户", notes = "根据id查询用户")
+    public ResponseEntity<SysUser> selectByPrimaryKey(@ApiParam(value = "id", required = true) @RequestParam Integer id)
+            throws Exception {
         logger.info("id={}", id);
         if (id == null) {
-            return null;
+            throw new Exception();
         }
         SysUser sysUser = sysUserService.selectByPrimaryKey(id);
         if (sysUser != null) {
             return ResponseEntity.ok(sysUser);
         }
-        return null;
+        throw new Exception();
     }
 
     /**
@@ -55,19 +58,22 @@ public class SysUserController {
      * 
      * @param id
      * @return
+     * 
+     * @throws Exception
      */
     @DeleteMapping("/deleteByPrimaryKey")
-    @ApiOperation(value = "根据id删除用户", notes = "根据id删除用户", tags = { "sysUser-Service" })
-    public ResponseEntity<?> deleteByPrimaryKey(@ApiParam(value = "id", required = true) @RequestParam Integer id) {
+    @ApiOperation(value = "根据id删除用户", notes = "根据id删除用户")
+    public ResponseEntity<?> deleteByPrimaryKey(@ApiParam(value = "id", required = true) @RequestParam Integer id)
+            throws Exception {
         logger.info("id={}", id);
         if (id == null) {
-            return ResponseEntity.ok("参数id不能为空");
+            throw new Exception();
         }
         int num = sysUserService.deleteByPrimaryKey(id);
         if (num > 0) {
             return ResponseEntity.ok("删除成功");
         }
-        return ResponseEntity.ok("此id不存在");
+        throw new Exception();
     }
 
 }

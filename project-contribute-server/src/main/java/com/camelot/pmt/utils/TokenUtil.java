@@ -1,13 +1,16 @@
 package com.camelot.pmt.utils;
 
-import io.jsonwebtoken.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class TokenUtil {
@@ -26,7 +29,6 @@ public class TokenUtil {
 
     @Value("${jwt.token.expiration}")
     private Long expiration;
-
 
     public String getSecret() {
         return secret;
@@ -47,21 +49,20 @@ public class TokenUtil {
     private Claims getClaimsFromToken(String token) {
         Claims claims;
         try {
-            claims = Jwts.parser()
-                    .setSigningKey(secret)
-                    .parseClaimsJws(token)
-                    .getBody();
+            claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
         } catch (Exception e) {
             claims = null;
         }
         return claims;
     }
 
-
     /**
      * 生成token
-     * @param username 用户名
-     * @param device  org.springframework.mobile.device 设备判断对象
+     * 
+     * @param username
+     *            用户名
+     * @param device
+     *            org.springframework.mobile.device 设备判断对象
      * @return
      */
     public String generateToken(String username, Device device) {
@@ -73,15 +74,13 @@ public class TokenUtil {
     }
 
     private String generateToken(Map<String, Object> claims) {
-        return Jwts.builder()
-                .setClaims(claims)
-                .setExpiration(generateExpirationDate())
-                .signWith(SignatureAlgorithm.HS512, this.secret)
-                .compact();
+        return Jwts.builder().setClaims(claims).setExpiration(generateExpirationDate())
+                .signWith(SignatureAlgorithm.HS512, this.secret).compact();
     }
 
     /**
      * 生成token时间 = 当前时间 + expiration（properties中配置的失效时间）
+     * 
      * @return
      */
     private Date generateExpirationDate() {
@@ -90,23 +89,25 @@ public class TokenUtil {
 
     /**
      * 通过spring-mobile-device的device检测访问主体
+     * 
      * @param device
      * @return
      */
-    private  String generateAudience(Device device) {
+    private String generateAudience(Device device) {
         String audience = AUDIENCE_UNKNOWN;
         if (device.isNormal()) {
-            audience = AUDIENCE_WEB;//PC端
+            audience = AUDIENCE_WEB;// PC端
         } else if (device.isTablet()) {
-            audience = AUDIENCE_TABLET;//平板
+            audience = AUDIENCE_TABLET;// 平板
         } else if (device.isMobile()) {
-            audience = AUDIENCE_MOBILE;//手机
+            audience = AUDIENCE_MOBILE;// 手机
         }
         return audience;
     }
 
     /**
      * 根据token获取用户名
+     * 
      * @param token
      * @return
      */
@@ -123,9 +124,11 @@ public class TokenUtil {
 
     /**
      * 判断token失效时间是否到了
+     * 
      * @param token
      * @return
      */
+    @SuppressWarnings("unused")
     private Boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
@@ -133,6 +136,7 @@ public class TokenUtil {
 
     /**
      * 获取设置的token失效时间
+     * 
      * @param token
      * @return
      */
@@ -148,16 +152,16 @@ public class TokenUtil {
     }
 
     // /**
-    //  * Token失效校验
-    //  * @param token token字符串
-    //  * @param loginInfo 用户信息
-    //  * @return
-    //  */
+    // * Token失效校验
+    // * @param token token字符串
+    // * @param loginInfo 用户信息
+    // * @return
+    // */
     // public Boolean validateToken(String token, LoginInfo loginInfo) {
-    //     final String username = getUsernameFromToken(token);
-    //     return (
-    //             username.equals(loginInfo.getUsername())
-    //                     && !isTokenExpired(token));
+    // final String username = getUsernameFromToken(token);
+    // return (
+    // username.equals(loginInfo.getUsername())
+    // && !isTokenExpired(token));
     // }
 
     public String refreshToken(String token) {
