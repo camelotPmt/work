@@ -2,7 +2,11 @@ package com.camelot.pmt.mapper;
 
 
 import com.camelot.pmt.model.SysDictType;
+import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
+@Mapper
 public interface SysDictTypeMapper {
     /**
      *
@@ -39,4 +43,6 @@ public interface SysDictTypeMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(SysDictType record);
+
+    List<SysDictType> selectSelective(SysDictType sysDictType);
 }

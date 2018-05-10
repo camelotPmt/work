@@ -125,4 +125,14 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--条件查询字典类型-->
+  <select id="selectSelective" parameterType="com.camelot.pmt.model.SysDictType" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_dict_type
+    where 1=1
+    <if test="typeName != null and typeName !=''">
+      type_name = #{typeName,jdbcType=VARCHAR}
+    </if>
+  </select>
 </mapper>
