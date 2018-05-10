@@ -1,5 +1,8 @@
 package com.camelot.pmt.shiro.jwt;
 
+import com.camelot.pmt.model.SysUser;
+import com.camelot.pmt.utils.TokenUtil;
+import com.google.common.collect.Sets;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -11,101 +14,97 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.camelot.pmt.model.SysUser;
-import com.camelot.pmt.utils.TokenUtil;
-import com.google.common.collect.Sets;
-
 public class JwtRealm extends AuthorizingRealm {
 
-    @Autowired
-    private TokenUtil tokenUtil;
+  @Autowired
+  private TokenUtil tokenUtil;
 
-    @Override
-    public boolean supports(AuthenticationToken token) {
-        // 表示此Realm只支持JwtToken类型
-        return token instanceof JwtToken;
+  @Override
+  public boolean supports(AuthenticationToken token) {
+    // 表示此Realm只支持JwtToken类型
+    return token instanceof JwtToken;
+  }
+
+  @Override
+  protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+    // 根据用户名查找角色，请根据需求实现
+    // String username = (String)principals.getPrimaryPrincipal();
+
+    SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+
+    // 根据username查询角色
+    authorizationInfo.setRoles(Sets.newHashSet("admin", "superadmin"));
+
+    // 根据username查询权限
+    authorizationInfo.setStringPermissions(Sets.newHashSet("system:*"));
+
+    return authorizationInfo;
+  }
+
+  @SuppressWarnings("unused")
+  @Override
+  protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
+      throws AuthenticationException {
+    JwtToken jwtToken = (JwtToken) authenticationToken;
+
+    // 获取token
+    String token = jwtToken.getToken();
+
+    // 从token中获取用户名
+    String username = tokenUtil.getUsernameFromToken(token);
+    // 根据用户名查询数据库
+
+    SysUser user = new SysUser();
+    user.setUserName(username);
+
+    user.setPassword("000000");
+
+    // 用户不存在
+    if (user == null) {
+      throw new UnknownAccountException();
     }
 
-    @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        // 根据用户名查找角色，请根据需求实现
-        // String username = (String)principals.getPrimaryPrincipal();
+    // 用户被禁用
+    /*
+     * if(user.getState()==0){
+     *
+     * throw new LockedAccountException(); }
+     */
 
-        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-
-        // 根据username查询角色
-        authorizationInfo.setRoles(Sets.newHashSet("admin", "superadmin"));
-
-        // 根据username查询权限
-        authorizationInfo.setStringPermissions(Sets.newHashSet("system:*"));
-
-        return authorizationInfo;
+    try {
+      return new SimpleAuthenticationInfo(username, token, getName());
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new AuthenticationException(e);
     }
+  }
 
-    @SuppressWarnings("unused")
-    @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
-            throws AuthenticationException {
-        JwtToken jwtToken = (JwtToken) authenticationToken;
+  @Override
+  public void clearCachedAuthorizationInfo(PrincipalCollection principals) {
+    super.clearCachedAuthorizationInfo(principals);
+  }
 
-        // 获取token
-        String token = jwtToken.getToken();
+  @Override
+  public void clearCachedAuthenticationInfo(PrincipalCollection principals) {
+    super.clearCachedAuthenticationInfo(principals);
+  }
 
-        // 从token中获取用户名
-        String username = tokenUtil.getUsernameFromToken(token);
-        // 根据用户名查询数据库
+  @Override
+  public void clearCache(PrincipalCollection principals) {
+    super.clearCache(principals);
+  }
 
-        SysUser user = new SysUser();
-        user.setUserName(username);
+  public void clearAllCachedAuthorizationInfo() {
+    getAuthorizationCache().clear();
+  }
 
-        user.setPassword("000000");
+  public void clearAllCachedAuthenticationInfo() {
+    getAuthenticationCache().clear();
+  }
 
-        // 用户不存在
-        if (user == null) {
-            throw new UnknownAccountException();
-        }
-
-        // 用户被禁用
-        /*
-         * if(user.getState()==0){
-         * 
-         * throw new LockedAccountException(); }
-         */
-
-        try {
-            return new SimpleAuthenticationInfo(username, token, getName());
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new AuthenticationException(e);
-        }
-    }
-
-    @Override
-    public void clearCachedAuthorizationInfo(PrincipalCollection principals) {
-        super.clearCachedAuthorizationInfo(principals);
-    }
-
-    @Override
-    public void clearCachedAuthenticationInfo(PrincipalCollection principals) {
-        super.clearCachedAuthenticationInfo(principals);
-    }
-
-    @Override
-    public void clearCache(PrincipalCollection principals) {
-        super.clearCache(principals);
-    }
-
-    public void clearAllCachedAuthorizationInfo() {
-        getAuthorizationCache().clear();
-    }
-
-    public void clearAllCachedAuthenticationInfo() {
-        getAuthenticationCache().clear();
-    }
-
-    public void clearAllCache() {
-        clearAllCachedAuthenticationInfo();
-        clearAllCachedAuthorizationInfo();
-    }
+  public void clearAllCache() {
+    clearAllCachedAuthenticationInfo();
+    clearAllCachedAuthorizationInfo();
+  }
 
 }

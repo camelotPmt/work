@@ -4,33 +4,34 @@ package com.camelot.pmt.mapper;
 import com.camelot.pmt.model.SysGroup;
 
 public interface SysGroupMapper {
-    /**
-     * @mbggenerated
-     */
-    int deleteByPrimaryKey(Integer id);
 
-    /**
-     * @mbggenerated
-     */
-    int insert(SysGroup record);
+  /**
+   * @mbggenerated
+   */
+  int deleteByPrimaryKey(Integer id);
 
-    /**
-     * @mbggenerated
-     */
-    int insertSelective(SysGroup record);
+  /**
+   * @mbggenerated
+   */
+  int insert(SysGroup record);
 
-    /**
-     * @mbggenerated
-     */
-    SysGroup selectByPrimaryKey(Integer id);
+  /**
+   * @mbggenerated
+   */
+  int insertSelective(SysGroup record);
 
-    /**
-     * @mbggenerated
-     */
-    int updateByPrimaryKeySelective(SysGroup record);
+  /**
+   * @mbggenerated
+   */
+  SysGroup selectByPrimaryKey(Integer id);
 
-    /**
-     * @mbggenerated
-     */
-    int updateByPrimaryKey(SysGroup record);
+  /**
+   * @mbggenerated
+   */
+  int updateByPrimaryKeySelective(SysGroup record);
+
+  /**
+   * @mbggenerated
+   */
+  int updateByPrimaryKey(SysGroup record);
 }
