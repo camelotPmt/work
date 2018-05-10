@@ -13,8 +13,6 @@
     <artifactId>project-contribute-server</artifactId>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<spring.version>4.0.0</spring.version>-->
-        <spring.jackson.version>2.6.0</spring.jackson.version>
     </properties>
 
 
@@ -207,10 +205,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.17</version>
+                <version>3.0.0</version>
                 <configuration>
                     <configLocation>../checkstyle.xml</configLocation>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
@@ -231,7 +229,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <!-- 开启热部署-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
