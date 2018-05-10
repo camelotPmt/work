@@ -24,7 +24,6 @@ import java.util.*;
 
 @Api(description = "登陆认证")
 @RestController
-@RequestMapping("/system")
 public class LoginController {
 
     @Autowired
