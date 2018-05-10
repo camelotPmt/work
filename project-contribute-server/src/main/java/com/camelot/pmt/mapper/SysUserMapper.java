@@ -1,11 +1,13 @@
 package com.camelot.pmt.mapper;
 
-
 import com.camelot.pmt.model.SysUser;
 
 public interface SysUserMapper {
     /**
-     * @mbggenerated
+     * 根据id删除用户
+     * 
+     * @param id
+     * @return
      */
     int deleteByPrimaryKey(Integer id);
 
@@ -20,7 +22,10 @@ public interface SysUserMapper {
     int insertSelective(SysUser record);
 
     /**
-     * @mbggenerated
+     * 根据id查询用户
+     * 
+     * @param id
+     * @return
      */
     SysUser selectByPrimaryKey(Integer id);
 
