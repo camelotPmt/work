@@ -93,7 +93,7 @@ public class LoginController {
      * @return
      */
     @GetMapping(value = "/checkLogin")
-    public ResponseEntity checkLogin(@CookieValue("token") String token) {
+    public ResponseEntity checkLogin(@CookieValue("Authorization") String token) {
         Map<String, Object> map = new HashMap<String, Object>();
         if (StringUtils.isEmpty(token)) {
             map.put("msg", "令牌为空");
@@ -119,7 +119,7 @@ public class LoginController {
     public ResponseEntity logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
         Optional<Cookie> cookie = Arrays.stream(request.getCookies())
-                .filter(ck -> "token".equals(ck.getName()))
+                .filter(ck -> "Authorization".equals(ck.getName()))
                 .limit(1)
                 .map(ck -> {
                     ck.setMaxAge(0);
@@ -141,7 +141,7 @@ public class LoginController {
      * @return
      */
     @PostMapping("/token/refresh")
-    public Object refreshToken(@CookieValue(value = "token") String token) {
+    public Object refreshToken(@CookieValue(value = "Authorization") String token) {
         Map<String, Object> map = new HashMap<String, Object>();
         String newToken = tokenUtil.refreshToken(token);
         map.put("code", 200);
