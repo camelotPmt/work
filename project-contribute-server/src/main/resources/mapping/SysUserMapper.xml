@@ -30,13 +30,13 @@
     delete from sys_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.camelot.pmt.model.SysUser">
-    insert into sys_user (id, user_name, real_name, 
+    <insert id="insert">
+    insert into sys_user (user_name, real_name,
       password, email, tel, 
       user_desc, state, create_by, 
       create_time, update_by, update_time
       )
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+    values (#{userName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR},
       #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
       #{userDesc,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{createBy,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}
