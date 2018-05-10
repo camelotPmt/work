@@ -5,33 +5,33 @@ import com.camelot.pmt.model.SysUserRole;
 
 public interface SysUserRoleMapper {
 
-  /**
-   * @mbggenerated
-   */
-  int deleteByPrimaryKey(Integer id);
+    /**
+     * @mbggenerated
+     */
+    int deleteByPrimaryKey(Integer id);
 
-  /**
-   * @mbggenerated
-   */
-  int insert(SysUserRole record);
+    /**
+     * @mbggenerated
+     */
+    int insert(SysUserRole record);
 
-  /**
-   * @mbggenerated
-   */
-  int insertSelective(SysUserRole record);
+    /**
+     * @mbggenerated
+     */
+    int insertSelective(SysUserRole record);
 
-  /**
-   * @mbggenerated
-   */
-  SysUserRole selectByPrimaryKey(Integer id);
+    /**
+     * @mbggenerated
+     */
+    SysUserRole selectByPrimaryKey(Integer id);
 
-  /**
-   * @mbggenerated
-   */
-  int updateByPrimaryKeySelective(SysUserRole record);
+    /**
+     * @mbggenerated
+     */
+    int updateByPrimaryKeySelective(SysUserRole record);
 
-  /**
-   * @mbggenerated
-   */
-  int updateByPrimaryKey(SysUserRole record);
+    /**
+     * @mbggenerated
+     */
+    int updateByPrimaryKey(SysUserRole record);
 }

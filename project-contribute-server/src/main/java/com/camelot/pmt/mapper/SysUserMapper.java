@@ -39,8 +39,8 @@ public interface SysUserMapper {
                @Param("tel") String tel, //
                @Param("userDesc") String userDesc,//
                @Param("state") Integer state,//
-               @Param("createTime") Integer createTime,//
-               @Param("createBy") Date createBy,//
+               @Param("createBy") Integer createBy,//
+               @Param("createTime") Date createTime,//
                @Param("updateBy") Integer updateBy,//
                @Param("updateTime") Date updateTime);
 

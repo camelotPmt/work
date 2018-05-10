@@ -1,11 +1,10 @@
 package com.camelot.pmt.shiro.jwt;
 
-import org.apache.shiro.authc.AuthenticationToken;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.shiro.authc.AuthenticationToken;
 
 @Data
 @Builder
@@ -14,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class JwtToken implements AuthenticationToken {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 1L;
 

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/demo")
 public class DomeController {
 
-  @GetMapping("/zhangao")
-  public ResponseEntity<String> dome() {
-    return ResponseEntity.ok("请求成功");
-  }
+    @GetMapping("/zhangao")
+    public ResponseEntity<String> dome() {
+        return ResponseEntity.ok("请求成功");
+    }
 }

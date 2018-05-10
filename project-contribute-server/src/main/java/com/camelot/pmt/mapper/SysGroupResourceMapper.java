@@ -5,33 +5,33 @@ import com.camelot.pmt.model.SysGroupResource;
 
 public interface SysGroupResourceMapper {
 
-  /**
-   * @mbggenerated
-   */
-  int deleteByPrimaryKey(Integer id);
+    /**
+     * @mbggenerated
+     */
+    int deleteByPrimaryKey(Integer id);
 
-  /**
-   * @mbggenerated
-   */
-  int insert(SysGroupResource record);
+    /**
+     * @mbggenerated
+     */
+    int insert(SysGroupResource record);
 
-  /**
-   * @mbggenerated
-   */
-  int insertSelective(SysGroupResource record);
+    /**
+     * @mbggenerated
+     */
+    int insertSelective(SysGroupResource record);
 
-  /**
-   * @mbggenerated
-   */
-  SysGroupResource selectByPrimaryKey(Integer id);
+    /**
+     * @mbggenerated
+     */
+    SysGroupResource selectByPrimaryKey(Integer id);
 
-  /**
-   * @mbggenerated
-   */
-  int updateByPrimaryKeySelective(SysGroupResource record);
+    /**
+     * @mbggenerated
+     */
+    int updateByPrimaryKeySelective(SysGroupResource record);
 
-  /**
-   * @mbggenerated
-   */
-  int updateByPrimaryKey(SysGroupResource record);
+    /**
+     * @mbggenerated
+     */
+    int updateByPrimaryKey(SysGroupResource record);
 }
