@@ -1,8 +1,16 @@
 package com.camelot.pmt.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class SysGroup {
+
     /**
      * 主键ID
      */
@@ -43,147 +51,4 @@ public class SysGroup {
      */
     private Date updateTime;
 
-    /**
-     * 主键ID
-     *
-     * @return id 主键ID
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * 主键ID
-     *
-     * @param id 主键ID
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * 组名称
-     *
-     * @return group_name 组名称
-     */
-    public String getGroupName() {
-        return groupName;
-    }
-
-    /**
-     * 组名称
-     *
-     * @param groupName 组名称
-     */
-    public void setGroupName(String groupName) {
-        this.groupName = groupName == null ? null : groupName.trim();
-    }
-
-    /**
-     * 组的描述
-     *
-     * @return group_desc 组的描述
-     */
-    public String getGroupDesc() {
-        return groupDesc;
-    }
-
-    /**
-     * 组的描述
-     *
-     * @param groupDesc 组的描述
-     */
-    public void setGroupDesc(String groupDesc) {
-        this.groupDesc = groupDesc == null ? null : groupDesc.trim();
-    }
-
-    /**
-     * 状态值 0-无效 1-有效
-     *
-     * @return state 状态值 0-无效 1-有效
-     */
-    public Integer getState() {
-        return state;
-    }
-
-    /**
-     * 状态值 0-无效 1-有效
-     *
-     * @param state 状态值 0-无效 1-有效
-     */
-    public void setState(Integer state) {
-        this.state = state;
-    }
-
-    /**
-     * 创建人
-     *
-     * @return create_by 创建人
-     */
-    public Integer getCreateBy() {
-        return createBy;
-    }
-
-    /**
-     * 创建人
-     *
-     * @param createBy 创建人
-     */
-    public void setCreateBy(Integer createBy) {
-        this.createBy = createBy;
-    }
-
-    /**
-     * 创建时间
-     *
-     * @return create_time 创建时间
-     */
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    /**
-     * 创建时间
-     *
-     * @param createTime 创建时间
-     */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
-     * 修改人
-     *
-     * @return update_by 修改人
-     */
-    public Integer getUpdateBy() {
-        return updateBy;
-    }
-
-    /**
-     * 修改人
-     *
-     * @param updateBy 修改人
-     */
-    public void setUpdateBy(Integer updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    /**
-     * 修改时间
-     *
-     * @return update_time 修改时间
-     */
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    /**
-     * 修改时间
-     *
-     * @param updateTime 修改时间
-     */
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

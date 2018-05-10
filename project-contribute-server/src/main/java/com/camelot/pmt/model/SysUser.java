@@ -1,12 +1,12 @@
 package com.camelot.pmt.model;
 
-import java.util.Date;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.util.Date;
 
 public class SysUser {
+
     /**
      * 主键ID
      */
@@ -83,8 +83,7 @@ public class SysUser {
     /**
      * 主键ID
      *
-     * @param id
-     *            主键ID
+     * @param id 主键ID
      */
     public void setId(Integer id) {
         this.id = id;
@@ -102,8 +101,7 @@ public class SysUser {
     /**
      * 用户名
      *
-     * @param userName
-     *            用户名
+     * @param userName 用户名
      */
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
@@ -121,8 +119,7 @@ public class SysUser {
     /**
      * 真实名
      *
-     * @param realName
-     *            真实名
+     * @param realName 真实名
      */
     public void setRealName(String realName) {
         this.realName = realName == null ? null : realName.trim();
@@ -140,8 +137,7 @@ public class SysUser {
     /**
      * 密码
      *
-     * @param password
-     *            密码
+     * @param password 密码
      */
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
@@ -159,8 +155,7 @@ public class SysUser {
     /**
      * 电子邮件
      *
-     * @param email
-     *            电子邮件
+     * @param email 电子邮件
      */
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
@@ -178,8 +173,7 @@ public class SysUser {
     /**
      * 电话
      *
-     * @param tel
-     *            电话
+     * @param tel 电话
      */
     public void setTel(String tel) {
         this.tel = tel == null ? null : tel.trim();
@@ -197,8 +191,7 @@ public class SysUser {
     /**
      * 描述/备注
      *
-     * @param userDesc
-     *            描述/备注
+     * @param userDesc 描述/备注
      */
     public void setUserDesc(String userDesc) {
         this.userDesc = userDesc == null ? null : userDesc.trim();
@@ -216,8 +209,7 @@ public class SysUser {
     /**
      * 状态值 0-无效 1-有效
      *
-     * @param state
-     *            状态值 0-无效 1-有效
+     * @param state 状态值 0-无效 1-有效
      */
     public void setState(Integer state) {
         this.state = state;
@@ -235,8 +227,7 @@ public class SysUser {
     /**
      * 创建人
      *
-     * @param createBy
-     *            创建人
+     * @param createBy 创建人
      */
     public void setCreateBy(Integer createBy) {
         this.createBy = createBy;
@@ -254,8 +245,7 @@ public class SysUser {
     /**
      * 创建时间
      *
-     * @param createTime
-     *            创建时间
+     * @param createTime 创建时间
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
@@ -273,8 +263,7 @@ public class SysUser {
     /**
      * 修改人
      *
-     * @param updateBy
-     *            修改人
+     * @param updateBy 修改人
      */
     public void setUpdateBy(Integer updateBy) {
         this.updateBy = updateBy;
@@ -292,8 +281,7 @@ public class SysUser {
     /**
      * 修改时间
      *
-     * @param updateTime
-     *            修改时间
+     * @param updateTime 修改时间
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;

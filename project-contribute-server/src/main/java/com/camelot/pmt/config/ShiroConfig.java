@@ -34,8 +34,6 @@ public class ShiroConfig {
 
     /**
      * 自定义Realm
-     *
-     * @return
      */
     @Bean(name = "jwtRealm")
     @DependsOn("lifecycleBeanPostProcessor")
@@ -67,8 +65,6 @@ public class ShiroConfig {
         // 允许用户匿名访问/login(登录接口)
         filterChainDefinitionMap.put("/login", "anon");
 
-        // 验证码允许匿名访问
-        filterChainDefinitionMap.put("/captcha", "anon");
         filterChainDefinitionMap.put("/api-docs", "anon");
         filterChainDefinitionMap.put("/v2/api-docs", "anon");
         filterChainDefinitionMap.put("/swagger-ui.html", "anon");
@@ -92,8 +88,6 @@ public class ShiroConfig {
 
     /**
      * Subject工厂管理器
-     *
-     * @return
      */
     @Bean
     public DefaultWebSubjectFactory subjectFactory() {
@@ -103,8 +97,6 @@ public class ShiroConfig {
 
     /**
      * 安全管理器
-     *
-     * @return
      */
     @Bean("securityManager")
     public DefaultWebSecurityManager securityManager() {
@@ -117,7 +109,8 @@ public class ShiroConfig {
         securityManager.setSessionManager(sessionManager());
 
         // 关闭session存储，禁用Session作为存储策略的实现，但它没有完全地禁用Session所以需要配合SubjectFactory中的context.setSessionCreationEnabled(false)
-        ((DefaultSessionStorageEvaluator) ((DefaultSubjectDAO) securityManager.getSubjectDAO()).getSessionStorageEvaluator()).setSessionStorageEnabled(false);
+        ((DefaultSessionStorageEvaluator) ((DefaultSubjectDAO) securityManager.getSubjectDAO())
+                .getSessionStorageEvaluator()).setSessionStorageEnabled(false);
 
         // 用户授权/认证信息Cache, 后期可采用EhCache缓存
         // securityManager.setCacheManager(cacheManager());
@@ -128,8 +121,6 @@ public class ShiroConfig {
 
     /**
      * 会话管理器
-     *
-     * @return
      */
     public DefaultSessionManager sessionManager() {
         DefaultSessionManager sessionManager = new DefaultSessionManager();
@@ -140,8 +131,6 @@ public class ShiroConfig {
 
     /**
      * 用户授权信息缓存
-     *
-     * @return
      */
     @Bean
     public CacheManager cacheManager() {
@@ -152,8 +141,6 @@ public class ShiroConfig {
 
     /**
      * 凭证匹配器
-     *
-     * @return
      */
     @Bean
     public CredentialsMatcher credentialsMatcher() {
@@ -166,8 +153,6 @@ public class ShiroConfig {
 
     /**
      * Shiro生命周期处理器
-     *
-     * @return
      */
     @Bean(name = "lifecycleBeanPostProcessor")
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
@@ -176,8 +161,6 @@ public class ShiroConfig {
 
     /**
      * 开启Shiro注解(如@RequiresRoles,@RequiresPermissions)
-     *
-     * @return
      */
     @Bean
     @DependsOn("lifecycleBeanPostProcessor")
@@ -189,7 +172,8 @@ public class ShiroConfig {
 
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor() {
-        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
+        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new
+                AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager());
         return authorizationAttributeSourceAdvisor;
     }

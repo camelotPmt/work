@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan("com.camelot.pmt.mapper")
 public class PmtApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(PmtApplication.class, args);
     }

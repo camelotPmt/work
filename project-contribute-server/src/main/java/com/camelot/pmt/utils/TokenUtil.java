@@ -1,16 +1,15 @@
 package com.camelot.pmt.utils;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class TokenUtil {
@@ -58,12 +57,9 @@ public class TokenUtil {
 
     /**
      * 生成token
-     * 
-     * @param username
-     *            用户名
-     * @param device
-     *            org.springframework.mobile.device 设备判断对象
-     * @return
+     *
+     * @param username 用户名
+     * @param device   org.springframework.mobile.device 设备判断对象
      */
     public String generateToken(String username, Device device) {
         Map<String, Object> claims = new HashMap<>();
@@ -80,8 +76,6 @@ public class TokenUtil {
 
     /**
      * 生成token时间 = 当前时间 + expiration（properties中配置的失效时间）
-     * 
-     * @return
      */
     private Date generateExpirationDate() {
         return new Date(System.currentTimeMillis() + expiration * 1000);
@@ -89,9 +83,6 @@ public class TokenUtil {
 
     /**
      * 通过spring-mobile-device的device检测访问主体
-     * 
-     * @param device
-     * @return
      */
     private String generateAudience(Device device) {
         String audience = AUDIENCE_UNKNOWN;
@@ -107,9 +98,6 @@ public class TokenUtil {
 
     /**
      * 根据token获取用户名
-     * 
-     * @param token
-     * @return
      */
     public String getUsernameFromToken(String token) {
         String username;
@@ -124,9 +112,6 @@ public class TokenUtil {
 
     /**
      * 判断token失效时间是否到了
-     * 
-     * @param token
-     * @return
      */
     @SuppressWarnings("unused")
     private Boolean isTokenExpired(String token) {
@@ -136,9 +121,6 @@ public class TokenUtil {
 
     /**
      * 获取设置的token失效时间
-     * 
-     * @param token
-     * @return
      */
     public Date getExpirationDateFromToken(String token) {
         Date expiration;

@@ -4,6 +4,7 @@ package com.camelot.pmt.mapper;
 import com.camelot.pmt.model.SysDictType;
 
 public interface SysDictTypeMapper {
+
     /**
      * @mbggenerated
      */

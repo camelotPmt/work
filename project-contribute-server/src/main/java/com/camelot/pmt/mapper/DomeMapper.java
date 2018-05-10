@@ -5,4 +5,5 @@ package com.camelot.pmt.mapper;
  */
 //@Mapper
 public interface DomeMapper {
+
 }

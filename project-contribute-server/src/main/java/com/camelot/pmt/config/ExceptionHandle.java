@@ -22,11 +22,14 @@ import java.sql.SQLException;
  */
 @ControllerAdvice
 public class ExceptionHandle {
+
     private static final Logger log = LoggerFactory.getLogger(ExceptionHandle.class);
 
-    @ExceptionHandler({SQLException.class, Exception.class, JsonMappingException.class, ShiroException.class,
+    @ExceptionHandler({SQLException.class, Exception.class, JsonMappingException.class,
+            ShiroException.class,
             UnauthorizedException.class})
-    final ResponseEntity<Object> handleControllerApiException(HttpServletRequest request, Throwable ex) {
+    final ResponseEntity<Object> handleControllerApiException(HttpServletRequest request,
+                                                              Throwable ex) {
         HttpHeaders headers = new HttpHeaders();
         HttpStatus status = HttpStatus.BAD_REQUEST;
         if (ex instanceof HttpMessageNotReadableException) {

@@ -20,7 +20,7 @@ public class SubjectUtil {
 
     /**
      * 直接从token获取用户id，不抛异常。
-     * 
+     *
      * @param token
      *            token
      * @return 用户id
@@ -32,7 +32,7 @@ public class SubjectUtil {
 
     /**
      * 直接从token获取用户id，不抛异常。
-     * 
+     *
      * @param token
      *            token
      * @return 用户id
