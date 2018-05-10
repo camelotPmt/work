@@ -1,14 +1,12 @@
 package com.camelot.pmt.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.camelot.pmt.mapper.SysUserMapper;
 import com.camelot.pmt.model.SysUser;
 import com.camelot.pmt.service.SysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
- * 
  * @author qiaodj
  * @date 2018年5月10日
  */
@@ -19,6 +17,9 @@ public class SysUserServiceImpl implements SysUserService {
 
     /**
      * 根据id查询用户
+     *
+     * @param id
+     * @return
      */
     @Override
     public SysUser selectByPrimaryKey(Integer id) {
@@ -27,9 +28,31 @@ public class SysUserServiceImpl implements SysUserService {
 
     /**
      * 根据id删除用户
+     *
+     * @param id
+     * @return
      */
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return sysUserMapper.deleteByPrimaryKey(id);
     }
+
+    /**
+     * 增加用户
+     *
+     * @param userName
+     * @param realName
+     * @param password
+     * @param email
+     * @param tel
+     * @param userDesc
+     * @param state
+     * @return
+     */
+    @Override
+    public int insert(String userName, String realName, String password, String email, String tel, String userDesc,
+                      Integer state) {
+        return 0;
+    }
+
 }
