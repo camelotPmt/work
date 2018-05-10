@@ -1,6 +1,5 @@
 package com.camelot.pmt.mapper;
 
-
 import com.camelot.pmt.model.SysRoleResource;
 
 public interface SysRoleResourceMapper {

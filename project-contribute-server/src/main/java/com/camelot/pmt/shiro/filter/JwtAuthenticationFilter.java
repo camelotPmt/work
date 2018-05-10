@@ -22,8 +22,7 @@ public class JwtAuthenticationFilter extends AuthenticatingFilter {
     private static final String TOKEN = "Authorization";
 
     @Override
-    protected AuthenticationToken createToken(ServletRequest request, ServletResponse response)
-            throws Exception {
+    protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         // 先从Header里面获取
         String token = httpRequest.getHeader(TOKEN);
@@ -43,34 +42,28 @@ public class JwtAuthenticationFilter extends AuthenticatingFilter {
                 }
             }
         }
-        return JwtToken.builder()
-                .token(token)
-                .build();
+        return JwtToken.builder().token(token).build();
     }
 
     @Override
-    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response,
-                                      Object mappedValue) {
+    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
         return false;
     }
 
     @Override
-    protected boolean onAccessDenied(ServletRequest request, ServletResponse response)
-            throws Exception {
+    protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         return executeLogin(request, response);
     }
 
     @Override
-    protected boolean onLoginSuccess(AuthenticationToken token, Subject subject,
-                                     ServletRequest request,
-                                     ServletResponse response) throws Exception {
+    protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request,
+            ServletResponse response) throws Exception {
         return true;
     }
 
     @Override
-    protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException ae,
-                                     ServletRequest request,
-                                     ServletResponse response) {
+    protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException ae, ServletRequest request,
+            ServletResponse response) {
         HttpServletResponse servletResponse = (HttpServletResponse) response;
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("code", HttpServletResponse.SC_UNAUTHORIZED);

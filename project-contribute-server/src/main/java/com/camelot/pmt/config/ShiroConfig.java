@@ -1,9 +1,10 @@
 package com.camelot.pmt.config;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-import com.camelot.pmt.shiro.StatelessDefaultSubjectFactory;
-import com.camelot.pmt.shiro.filter.JwtAuthenticationFilter;
-import com.camelot.pmt.shiro.jwt.JwtRealm;
+import javax.servlet.Filter;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -25,9 +26,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
-import javax.servlet.Filter;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.camelot.pmt.shiro.StatelessDefaultSubjectFactory;
+import com.camelot.pmt.shiro.filter.JwtAuthenticationFilter;
+import com.camelot.pmt.shiro.jwt.JwtRealm;
 
 @Configuration
 public class ShiroConfig {
@@ -73,13 +74,13 @@ public class ShiroConfig {
 
         filterChainDefinitionMap.put("/**", "jwt");
 
-//        filterChainDefinitionMap.put("/**","anon");
+        // filterChainDefinitionMap.put("/**","anon");
 
         shiroFilter.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         Map<String, Filter> filters = new LinkedHashMap<>();
         filters.put("jwt", new JwtAuthenticationFilter());
-        //filters.put("jcaptchaValidate", new JcaptchaValidateFilter());
+        // filters.put("jcaptchaValidate", new JcaptchaValidateFilter());
 
         shiroFilter.setFilters(filters);
 
@@ -172,8 +173,7 @@ public class ShiroConfig {
 
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor() {
-        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new
-                AuthorizationAttributeSourceAdvisor();
+        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager());
         return authorizationAttributeSourceAdvisor;
     }

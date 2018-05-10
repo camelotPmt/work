@@ -31,9 +31,8 @@ public class LoginController {
     // private RedisTemplate<String, Object> redisTemplate;
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, Object>> login(@RequestBody SysUser sysUser,
-                                                     HttpServletRequest request,
-                                                     HttpServletResponse response, Device device) throws IOException {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody SysUser sysUser, HttpServletRequest request,
+            HttpServletResponse response, Device device) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
         String username = sysUser.getUserName();
         // String password = sysUser.getPassword();
@@ -89,8 +88,7 @@ public class LoginController {
      * 检查是否登录
      */
     @GetMapping(value = "/checkLogin")
-    public ResponseEntity<Map<String, Object>> checkLogin(
-            @CookieValue("Authorization") String token) {
+    public ResponseEntity<Map<String, Object>> checkLogin(@CookieValue("Authorization") String token) {
         Map<String, Object> map = new HashMap<String, Object>();
         if (StringUtils.isEmpty(token)) {
             map.put("msg", "令牌为空");
@@ -107,12 +105,10 @@ public class LoginController {
      * 登出
      */
     @GetMapping(value = "/logout")
-    public ResponseEntity<Map<String, Object>> logout(HttpServletRequest request,
-                                                      HttpServletResponse response)
+    public ResponseEntity<Map<String, Object>> logout(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
-        Optional<Cookie> cookie = Arrays.stream(request.getCookies())
-                .filter(ck -> "Authorization".equals(ck.getName()))
+        Optional<Cookie> cookie = Arrays.stream(request.getCookies()).filter(ck -> "Authorization".equals(ck.getName()))
                 .limit(1).map(ck -> {
                     ck.setMaxAge(0);
                     ck.setHttpOnly(true);

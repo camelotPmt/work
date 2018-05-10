@@ -6,5 +6,4 @@ package com.camelot.pmt.service;
 
 public interface DomeService {
 
-
 }

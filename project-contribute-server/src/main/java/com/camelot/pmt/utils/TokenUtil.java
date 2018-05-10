@@ -58,8 +58,10 @@ public class TokenUtil {
     /**
      * 生成token
      *
-     * @param username 用户名
-     * @param device   org.springframework.mobile.device 设备判断对象
+     * @param username
+     *            用户名
+     * @param device
+     *            org.springframework.mobile.device 设备判断对象
      */
     public String generateToken(String username, Device device) {
         Map<String, Object> claims = new HashMap<>();

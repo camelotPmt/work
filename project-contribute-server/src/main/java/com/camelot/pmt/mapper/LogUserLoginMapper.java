@@ -1,6 +1,5 @@
 package com.camelot.pmt.mapper;
 
-
 import com.camelot.pmt.model.LogUserLogin;
 
 public interface LogUserLoginMapper {

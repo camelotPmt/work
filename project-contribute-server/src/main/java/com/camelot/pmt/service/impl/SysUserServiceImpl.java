@@ -53,7 +53,7 @@ public class SysUserServiceImpl implements SysUserService {
      */
     @Override
     public int insert(String userName, String realName, String password, String email, String tel, String userDesc,
-                      Integer state) {
+            Integer state) {
         // 创建人修改人应从session中获取暂留
         return sysUserMapper.insert(userName, realName, password, email, tel, userDesc, state, 1, new Date(), 1,
                 new Date());

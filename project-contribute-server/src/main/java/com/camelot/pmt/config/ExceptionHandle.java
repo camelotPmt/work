@@ -25,11 +25,9 @@ public class ExceptionHandle {
 
     private static final Logger log = LoggerFactory.getLogger(ExceptionHandle.class);
 
-    @ExceptionHandler({SQLException.class, Exception.class, JsonMappingException.class,
-            ShiroException.class,
-            UnauthorizedException.class})
-    final ResponseEntity<Object> handleControllerApiException(HttpServletRequest request,
-                                                              Throwable ex) {
+    @ExceptionHandler({ SQLException.class, Exception.class, JsonMappingException.class, ShiroException.class,
+            UnauthorizedException.class })
+    final ResponseEntity<Object> handleControllerApiException(HttpServletRequest request, Throwable ex) {
         HttpHeaders headers = new HttpHeaders();
         HttpStatus status = HttpStatus.BAD_REQUEST;
         if (ex instanceof HttpMessageNotReadableException) {
@@ -60,10 +58,9 @@ public class ExceptionHandle {
         if (ex instanceof ShiroException) {
             ShiroException shiroException = (ShiroException) ex;
             log.error("认证异常： %s", shiroException);
-            return new ResponseEntity<>("登录认证异常：" + shiroException.getMessage(), headers,
-                    HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>("登录认证异常：" + shiroException.getMessage(), headers, HttpStatus.UNAUTHORIZED);
         }
-        //授权异常 捕捉UnauthorizedException
+        // 授权异常 捕捉UnauthorizedException
         if (ex instanceof UnauthorizedException) {
             UnauthorizedException unauthorizedException = (UnauthorizedException) ex;
             log.error("非法授权异常： %s", unauthorizedException);
@@ -71,8 +68,7 @@ public class ExceptionHandle {
                     HttpStatus.UNAUTHORIZED);
         }
         if (ex instanceof HttpRequestMethodNotSupportedException) {
-            HttpRequestMethodNotSupportedException httpRequestMethodNotSupportedException =
-                    (HttpRequestMethodNotSupportedException) ex;
+            HttpRequestMethodNotSupportedException httpRequestMethodNotSupportedException = (HttpRequestMethodNotSupportedException) ex;
             log.error("HTTP信息异常：%s", httpRequestMethodNotSupportedException);
             return new ResponseEntity<>("HTTP请求方式错误：" + ex.getMessage(), headers, status);
         }
