@@ -68,7 +68,7 @@ public class LoginController {
         if (subject.isAuthenticated()) {
 
             // 将token写出到cookie
-            Cookie cookie = new Cookie("token", token);
+            Cookie cookie = new Cookie("Authorization", token);
             cookie.setHttpOnly(true);
             cookie.setMaxAge(3600 * 5);
             cookie.setPath("/");
