@@ -1,12 +1,15 @@
 package com.camelot.pmt.config;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
+import org.apache.shiro.ShiroException;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,7 +25,7 @@ public class ExceptionHandle {
     private static final Logger log = LoggerFactory.getLogger(ExceptionHandle.class);
 
     @ExceptionHandler({
-            SQLException.class, Exception.class, JsonMappingException.class})
+            SQLException.class, Exception.class, JsonMappingException.class,ShiroException.class,UnauthorizedException.class})
     final ResponseEntity<Object> handleControllerApiException(HttpServletRequest request, Throwable ex) {
         HttpHeaders headers = new HttpHeaders();
         HttpStatus status = HttpStatus.BAD_REQUEST;
@@ -49,6 +52,23 @@ public class ExceptionHandle {
             IllegalArgumentException illegalArgumentException = (IllegalArgumentException) ex;
             log.error("业务异常： %s", illegalArgumentException);
             return new ResponseEntity("业务异常：" + illegalArgumentException.getMessage(), headers, status);
+        }
+        // 捕捉shiro的异常
+        if(ex instanceof ShiroException){
+            ShiroException shiroException= (ShiroException) ex;
+            log.error("认证异常： %s",shiroException);
+            return new ResponseEntity<>("登录认证异常："+shiroException.getMessage(),headers,HttpStatus.UNAUTHORIZED);
+        }
+        //授权异常 捕捉UnauthorizedException
+        if(ex instanceof UnauthorizedException){
+            UnauthorizedException unauthorizedException= (UnauthorizedException) ex;
+            log.error("非法授权异常： %s",unauthorizedException);
+            return new ResponseEntity<>("非法授权异常："+unauthorizedException.getMessage(),headers,HttpStatus.UNAUTHORIZED);
+        }
+        if(ex instanceof HttpRequestMethodNotSupportedException){
+            HttpRequestMethodNotSupportedException httpRequestMethodNotSupportedException = (HttpRequestMethodNotSupportedException) ex;
+            log.error("HTTP信息异常：%s", httpRequestMethodNotSupportedException);
+            return new ResponseEntity("HTTP请求方式错误：" + ex.getMessage(), headers, status);
         }
 
         Exception exception = (Exception) ex;
