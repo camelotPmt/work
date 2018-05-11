@@ -1,6 +1,8 @@
 package com.camelot.pmt.controller;
 import com.camelot.pmt.model.SysDictValue;
 import com.camelot.pmt.service.SysDictValueService;
+
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +22,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @RestController
 @RequestMapping("/sys-dic-value")
+@Api(value = "数据字值", description = "数据字值")
 public class SysDicValueController {
 
     @Autowired
