@@ -5,10 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
-* @Author:       lxk
-* @CreateDate:  2018/5/10 10:38
-* @Description: 数据字典类型VO
-*/
+ * @Author: lxk
+ * @CreateDate: 2018/5/10 10:38
+ * @Description: 数据字典类型VO
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
