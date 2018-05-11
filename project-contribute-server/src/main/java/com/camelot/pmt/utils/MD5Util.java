@@ -61,15 +61,7 @@ public class MD5Util {
      * @return
      */
     public static boolean verify(String password, String md5) {
-        char[] cs1 = new char[32];
-        char[] cs2 = new char[16];
-        for (int i = 0; i < 48; i += 3) {
-            cs1[i / 3 * 2] = md5.charAt(i);
-            cs1[i / 3 * 2 + 1] = md5.charAt(i + 2);
-            cs2[i / 3] = md5.charAt(i + 1);
-        }
-        String salt = new String(cs2);
-        return md5Hex(password + salt).equals(new String(cs1));
+        return md5Hex(password).equals(md5);
     }
 
     /**
