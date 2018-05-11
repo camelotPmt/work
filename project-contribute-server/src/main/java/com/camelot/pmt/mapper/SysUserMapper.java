@@ -1,6 +1,7 @@
 package com.camelot.pmt.mapper;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -33,16 +34,16 @@ public interface SysUserMapper {
      * @return
      */
     int insert(@Param("userName") String userName, //
-            @Param("realName") String realName, //
-            @Param("password") String password, //
-            @Param("email") String email, //
-            @Param("tel") String tel, //
-            @Param("userDesc") String userDesc, //
-            @Param("state") Integer state, //
-            @Param("createBy") Integer createBy, //
-            @Param("createTime") Date createTime, //
-            @Param("updateBy") Integer updateBy, //
-            @Param("updateTime") Date updateTime);
+               @Param("realName") String realName, //
+               @Param("password") String password, //
+               @Param("email") String email, //
+               @Param("tel") String tel, //
+               @Param("userDesc") String userDesc, //
+               @Param("state") Integer state, //
+               @Param("createBy") Integer createBy, //
+               @Param("createTime") Date createTime, //
+               @Param("updateBy") Integer updateBy, //
+               @Param("updateTime") Date updateTime);
 
     /**
      * @mbggenerated
@@ -64,6 +65,13 @@ public interface SysUserMapper {
      * @return
      */
     int updateByPrimaryKeySelective(SysUser sysUser);
+
+    /**
+     * 查询所有用户
+     *
+     * @return
+     */
+    List<SysUser> selectAll();
 
     /**
      * @mbggenerated

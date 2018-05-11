@@ -1,5 +1,7 @@
 package com.camelot.pmt.service;
 
+import java.util.List;
+
 import com.camelot.pmt.model.SysUser;
 
 /**
@@ -37,7 +39,7 @@ public interface SysUserService {
      * @return
      */
     int insert(String userName, String realName, String password, String email, String tel, String userDesc,
-            Integer state);
+               Integer state);
 
     /**
      * 根据id更新用户信息
@@ -46,5 +48,12 @@ public interface SysUserService {
      * @return
      */
     int updateByPrimaryKeySelective(SysUser sysUser);
+
+    /**
+     * 查询所有用户(分页)
+     *
+     * @return
+     */
+    List<SysUser> selectAllByPage(Integer pageNum, Integer pageSize);
 
 }

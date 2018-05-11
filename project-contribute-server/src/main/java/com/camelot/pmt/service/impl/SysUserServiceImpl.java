@@ -1,6 +1,7 @@
 package com.camelot.pmt.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.camelot.pmt.mapper.SysUserMapper;
 import com.camelot.pmt.model.SysUser;
 import com.camelot.pmt.service.SysUserService;
+import com.camelot.pmt.utils.MD5Util;
+import com.github.pagehelper.PageHelper;
+
 
 /**
  * @author qiaodj
@@ -72,8 +76,11 @@ public class SysUserServiceImpl implements SysUserService {
         if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(password) || state == null) {
             return 0;
         }
+        //MD5加盐加密
+        String mD5GeneratePassword = MD5Util.generate(password);
         // 创建人修改人应从session中获取暂留
-        return sysUserMapper.insert(userName, realName, password, email, tel, userDesc, state, 1, new Date(), 1,
+        return sysUserMapper.insert(userName, realName, mD5GeneratePassword, email, tel, userDesc, state, 1, new Date
+                        (), 1,
                 new Date());
     }
 
@@ -87,5 +94,23 @@ public class SysUserServiceImpl implements SysUserService {
     @Transactional
     public int updateByPrimaryKeySelective(SysUser sysUser) {
         return sysUserMapper.updateByPrimaryKeySelective(sysUser);
+    }
+
+    /**
+     * 查询所有用户(分页)
+     *
+     * @param pageSize
+     * @param pageNum
+     * @return
+     */
+    @Override
+    public List<SysUser> selectAllByPage(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum == null || pageNum == 0 ? 1 : pageNum, pageSize == null || pageSize == 0 ? 10 :
+                pageSize);
+        List<SysUser> list = sysUserMapper.selectAll();
+        if (list.size() > 0) {
+            return list;
+        }
+        return null;
     }
 }

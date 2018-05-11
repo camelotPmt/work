@@ -20,6 +20,12 @@
     id, user_name, real_name, password, email, tel, user_desc, state, create_by, create_time, 
     update_by, update_time
     </sql>
+    <!--查询所有用户-->
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_user
+    </select>
     <!--根据id查询用户-->
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
