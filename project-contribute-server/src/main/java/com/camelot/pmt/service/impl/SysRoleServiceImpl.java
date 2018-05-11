@@ -37,9 +37,9 @@ public class SysRoleServiceImpl implements SysRoleService {
         // 获取当前登录人
         SysUser user = new SysUser();
         user.setId(1);
-        if (user == null && user.getId() == null) {
-            throw new RuntimeException("未获取到当前登录人");
-        }
+//        if (user == null && user.getId() == null) {
+//            throw new RuntimeException("未获取到当前登录人");
+//        }
         sysRole.setCreatedBy(user.getId());
         sysRole.setUpdatedBy(user.getId());
         int insert = sysRoleMapper.insert(sysRole);
@@ -77,9 +77,9 @@ public class SysRoleServiceImpl implements SysRoleService {
         // 获取当前登录人
         SysUser user = new SysUser();
         user.setId(1);
-        if (user == null && user.getId() == null) {
-            throw new RuntimeException("未获取到当前登录人");
-        }
+//        if (user == null && user.getId() == null) {
+//            throw new RuntimeException("未获取到当前登录人");
+//        }
         sysRole.setUpdatedBy(user.getId());
         int update = sysRoleMapper.updateByIdSelective(sysRole);
         if (update == 1) {
