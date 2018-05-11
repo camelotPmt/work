@@ -14,7 +14,6 @@ import com.camelot.pmt.service.SysUserService;
 import com.camelot.pmt.utils.MD5Util;
 import com.github.pagehelper.PageHelper;
 
-
 /**
  * @author qiaodj
  * @date 2018年5月10日
@@ -72,16 +71,15 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     @Transactional
     public int insert(String userName, String realName, String password, String email, String tel, String userDesc,
-                      Integer state) {
+            Integer state) {
         if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(password) || state == null) {
             return 0;
         }
-        //MD5加盐加密
-        String mD5GeneratePassword = MD5Util.MD5(password);
+        // MD5加盐加密
+        String mD5SaltGeneratePassword = MD5Util.saltGenerate(password, userName);
         // 创建人修改人应从session中获取暂留
-        return sysUserMapper.insert(userName, realName, mD5GeneratePassword, email, tel, userDesc, state, 1, new Date
-                        (), 1,
-                new Date());
+        return sysUserMapper.insert(userName, realName, mD5SaltGeneratePassword, email, tel, userDesc, state, 1,
+                new Date(), 1, new Date());
     }
 
     /**
@@ -105,8 +103,8 @@ public class SysUserServiceImpl implements SysUserService {
      */
     @Override
     public List<SysUser> selectAllByPage(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum == null || pageNum == 0 ? 1 : pageNum, pageSize == null || pageSize == 0 ? 10 :
-                pageSize);
+        PageHelper.startPage(pageNum == null || pageNum == 0 ? 1 : pageNum,
+                pageSize == null || pageSize == 0 ? 10 : pageSize);
         List<SysUser> list = sysUserMapper.selectAll();
         if (list.size() > 0) {
             return list;
