@@ -30,3 +30,4 @@ Thumbs.db
 *.xcodeproj/xcuserdata/
 
 
+/project-contribute-web/package-lock.json
