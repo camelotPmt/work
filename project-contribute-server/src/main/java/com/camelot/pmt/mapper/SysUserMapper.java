@@ -33,16 +33,16 @@ public interface SysUserMapper {
      * @return
      */
     int insert(@Param("userName") String userName, //
-            @Param("realName") String realName, //
-            @Param("password") String password, //
-            @Param("email") String email, //
-            @Param("tel") String tel, //
-            @Param("userDesc") String userDesc, //
-            @Param("state") Integer state, //
-            @Param("createBy") Integer createBy, //
-            @Param("createTime") Date createTime, //
-            @Param("updateBy") Integer updateBy, //
-            @Param("updateTime") Date updateTime);
+               @Param("realName") String realName, //
+               @Param("password") String password, //
+               @Param("email") String email, //
+               @Param("tel") String tel, //
+               @Param("userDesc") String userDesc, //
+               @Param("state") Integer state, //
+               @Param("createBy") Integer createBy, //
+               @Param("createTime") Date createTime, //
+               @Param("updateBy") Integer updateBy, //
+               @Param("updateTime") Date updateTime);
 
     /**
      * @mbggenerated
@@ -58,9 +58,12 @@ public interface SysUserMapper {
     SysUser selectByPrimaryKey(Integer id);
 
     /**
-     * @mbggenerated
+     * 根据id更新用户信息
+     *
+     * @param sysUser
+     * @return
      */
-    int updateByPrimaryKeySelective(SysUser record);
+    int updateByPrimaryKeySelective(SysUser sysUser);
 
     /**
      * @mbggenerated
