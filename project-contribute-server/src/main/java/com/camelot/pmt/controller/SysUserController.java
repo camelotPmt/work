@@ -25,7 +25,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @Slf4j
 @RestController
-@RequestMapping("/sysUser")
+@RequestMapping("/sys-user")
 @Api(description = "用户服务")
 public class SysUserController {
 
