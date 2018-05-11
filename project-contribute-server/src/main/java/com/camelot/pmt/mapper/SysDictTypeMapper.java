@@ -1,10 +1,11 @@
 package com.camelot.pmt.mapper;
 
-import com.camelot.pmt.model.SysDictType;
-import com.camelot.pmt.model.SysDictTypeDTO;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
+import com.camelot.pmt.model.SysDictType;
+import com.camelot.pmt.model.SysDictTypeDTO;
 
 @Mapper
 public interface SysDictTypeMapper {

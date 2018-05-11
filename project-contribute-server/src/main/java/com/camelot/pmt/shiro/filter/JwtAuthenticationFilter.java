@@ -59,13 +59,13 @@ public class JwtAuthenticationFilter extends AuthenticatingFilter {
 
     @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request,
-            ServletResponse response) throws Exception {
+                                     ServletResponse response) throws Exception {
         return true;
     }
 
     @Override
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException ae, ServletRequest request,
-            ServletResponse response) {
+                                     ServletResponse response) {
         HttpServletResponse servletResponse = (HttpServletResponse) response;
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("code", HttpServletResponse.SC_UNAUTHORIZED);

@@ -1,14 +1,9 @@
 package com.camelot.pmt.controller;
 
 
-import com.camelot.pmt.model.SysDictType;
-import com.camelot.pmt.model.SysDictTypeDTO;
-import com.camelot.pmt.service.SysDictTypeService;
-import com.github.pagehelper.PageInfo;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +14,17 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import springfox.documentation.annotations.ApiIgnore;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.camelot.pmt.model.SysDictType;
+import com.camelot.pmt.model.SysDictTypeDTO;
+import com.camelot.pmt.service.SysDictTypeService;
+import com.github.pagehelper.PageInfo;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * @Author: lxk
@@ -45,8 +47,10 @@ public class SysDictTypeController {
     @PostMapping(value = "/save")
     @ApiOperation(value = "添加字典类型", notes = "添加字典类型")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "typeCode", value = "字典类型编码", required = true, paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "typeName", value = "字典类型名称", required = true, paramType = "query", dataType = "String"),})
+            @ApiImplicitParam(name = "typeCode", value = "字典类型编码", required = true, paramType = "query", dataType =
+                    "String"),
+            @ApiImplicitParam(name = "typeName", value = "字典类型名称", required = true, paramType = "query", dataType =
+                    "String"),})
     public ResponseEntity save(@ApiIgnore SysDictType sysDictType) {
         boolean flag = sysDictTypeService.add(sysDictType);
         if (flag) {
@@ -64,7 +68,8 @@ public class SysDictTypeController {
     @ApiOperation(value = "删除字典类型", notes = "删除字典类型")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "字典类型id", required = true, paramType = "query", dataType = "int"),
-            @ApiImplicitParam(name = "code", value = "字典类型编码", required = true, paramType = "query", dataType = "String"),})
+            @ApiImplicitParam(name = "code", value = "字典类型编码", required = true, paramType = "query", dataType =
+                    "String"),})
     public ResponseEntity delete(Integer id, String code) {
         boolean flag = sysDictTypeService.delete(id, code);
         if (flag) {
@@ -115,8 +120,10 @@ public class SysDictTypeController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, paramType = "query", dataType = "int"),
             @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, paramType = "query", dataType = "int"),
-            @ApiImplicitParam(name = "typeCode", value = "字典类型编码", required = false, paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "typeName", value = "字典类型名称", required = false, paramType = "query", dataType = "String"),})
+            @ApiImplicitParam(name = "typeCode", value = "字典类型编码", required = false, paramType = "query", dataType =
+                    "String"),
+            @ApiImplicitParam(name = "typeName", value = "字典类型名称", required = false, paramType = "query", dataType =
+                    "String"),})
     public ResponseEntity list(@ApiIgnore SysDictTypeDTO sysDictTypeVO) {
         PageInfo sysDictTypeList = sysDictTypeService.list(sysDictTypeVO);
         return ResponseEntity.ok(sysDictTypeList);
