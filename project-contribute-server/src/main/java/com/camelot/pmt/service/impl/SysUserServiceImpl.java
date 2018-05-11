@@ -59,4 +59,15 @@ public class SysUserServiceImpl implements SysUserService {
         return sysUserMapper.insert(userName, realName, password, email, tel, userDesc, state, 1, new Date(), 1,
                 new Date());
     }
+
+    /**
+     * 根据id更新用户信息
+     *
+     * @param sysUser
+     * @return
+     */
+    @Override
+    public int updateByPrimaryKeySelective(SysUser sysUser) {
+        return sysUserMapper.updateByPrimaryKeySelective(sysUser);
+    }
 }

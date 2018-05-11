@@ -58,9 +58,12 @@ public interface SysUserMapper {
     SysUser selectByPrimaryKey(Integer id);
 
     /**
-     * @mbggenerated
+     * 根据id更新用户信息
+     *
+     * @param sysUser
+     * @return
      */
-    int updateByPrimaryKeySelective(SysUser record);
+    int updateByPrimaryKeySelective(SysUser sysUser);
 
     /**
      * @mbggenerated

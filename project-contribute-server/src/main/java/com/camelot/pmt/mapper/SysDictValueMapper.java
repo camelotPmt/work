@@ -33,4 +33,8 @@ public interface SysDictValueMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(SysDictValue record);
+
+
+    int updateStateByPrimaryKey(Integer id);
+
 }

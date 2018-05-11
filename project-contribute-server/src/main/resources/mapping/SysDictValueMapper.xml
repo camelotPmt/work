@@ -140,4 +140,10 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <!--逻辑删除数据字典类型-->
+    <update id="updateStateByPrimaryKey" parameterType="java.lang.Integer">
+        update sys_dict_value
+        set state = 0
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

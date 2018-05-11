@@ -38,4 +38,13 @@ public interface SysUserService {
      */
     int insert(String userName, String realName, String password, String email, String tel, String userDesc,
                Integer state);
+
+    /**
+     * 根据id更新用户信息
+     *
+     * @param sysUser
+     * @return
+     */
+    int updateByPrimaryKeySelective(SysUser sysUser);
+
 }
