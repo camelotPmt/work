@@ -126,4 +126,31 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--条件查询字典类型-->
+  <select id="selectSelective" parameterType="com.camelot.pmt.model.SysDictTypeDTO" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_dict_type
+    where state = 1
+    <if test="typeName != null and typeName !=''">
+      and type_name = #{typeName,jdbcType=VARCHAR}
+    </if>
+    <if test="typeCode != null and typeCode !=''">
+      and type_code = #{typeCode,jdbcType=VARCHAR}
+    </if>
+    order by create_time desc
+  </select>
+  <!--根据类型code查询记录-->
+  <select id="selectByTypeCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_dict_type
+    where type_code = #{typeCode,jdbcType=VARCHAR}
+  </select>
+  <!--逻辑删除数据字典类型-->
+  <update id="updateStateByPrimaryKey" parameterType="java.lang.Integer">
+    update sys_dict_type
+    set state = 0
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

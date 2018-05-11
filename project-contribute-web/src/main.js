@@ -30,6 +30,20 @@ Vue.use(ZkTable)
 // Vue.use(VueRouter);
 
 /* eslint-disable no-new */
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) { // 是否需要登录拦截
+    if (store.state.token) { // 已登录
+      next()
+    } else {
+      next({
+        path: '/Login',
+        query: {redirect: to.fullPath}
+      })
+    }
+  } else {
+    next()
+  }
+})
 new Vue({
   el: '#app',
   router,
