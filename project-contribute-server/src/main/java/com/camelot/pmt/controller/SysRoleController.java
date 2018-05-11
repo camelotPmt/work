@@ -42,9 +42,12 @@ public class SysRoleController {
     @PostMapping(value = "/insert")
     @ApiOperation(value = "添加角色", notes = "添加角色")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "roleName", value = "角色名称", required = true, paramType = "form", dataType = "string"),
-            @ApiImplicitParam(name = "roleDesc", value = "角色描述", required = true, paramType = "form", dataType = "string"),
-            @ApiImplicitParam(name = "state", value = "角色状态", required = true, paramType = "form", dataType = "Integer")})
+            @ApiImplicitParam(name = "roleName", value = "角色名称", required = true, paramType = "form", dataType =
+                    "string"),
+            @ApiImplicitParam(name = "roleDesc", value = "角色描述", required = true, paramType = "form", dataType =
+                    "string"),
+            @ApiImplicitParam(name = "state", value = "角色状态", required = true, paramType = "form", dataType =
+                    "Integer")})
     public ResponseEntity insert(@ApiIgnore SysRole sysRole) {
         boolean result = sysRoleService.insertSysRole(sysRole);
         if (result) {
@@ -69,9 +72,12 @@ public class SysRoleController {
     @ApiOperation(value = "修改角色", notes = "修改角色")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "角色id", required = true, paramType = "query", dataType = "Integer"),
-            @ApiImplicitParam(name = "roleName", value = "角色名称", required = true, paramType = "query", dataType = "string"),
-            @ApiImplicitParam(name = "roleDesc", value = "角色描述", required = true, paramType = "query", dataType = "string"),
-            @ApiImplicitParam(name = "state", value = "角色状态", required = true, paramType = "query", dataType = "Integer")})
+            @ApiImplicitParam(name = "roleName", value = "角色名称", required = true, paramType = "query", dataType =
+                    "string"),
+            @ApiImplicitParam(name = "roleDesc", value = "角色描述", required = true, paramType = "query", dataType =
+                    "string"),
+            @ApiImplicitParam(name = "state", value = "角色状态", required = true, paramType = "query", dataType =
+                    "Integer")})
     public ResponseEntity update(@ApiIgnore SysRole sysRole) {
         boolean result = sysRoleService.updateById(sysRole);
         if (result) {

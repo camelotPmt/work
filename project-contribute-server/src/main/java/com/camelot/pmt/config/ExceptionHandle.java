@@ -70,7 +70,8 @@ public class ExceptionHandle {
                     HttpStatus.UNAUTHORIZED);
         }
         if (ex instanceof HttpRequestMethodNotSupportedException) {
-            HttpRequestMethodNotSupportedException httpRequestMethodNotSupportedException = (HttpRequestMethodNotSupportedException) ex;
+            HttpRequestMethodNotSupportedException httpRequestMethodNotSupportedException =
+                    (HttpRequestMethodNotSupportedException) ex;
             log.error("HTTP信息异常：%s", httpRequestMethodNotSupportedException);
             return new ResponseEntity<>("HTTP请求方式错误：" + ex.getMessage(), headers, status);
         }

@@ -104,7 +104,8 @@ public class SysUserController {
                                     @ApiParam(value = "电子邮件", required = false) @RequestParam String email,
                                     @ApiParam(value = "电话", required = false) @RequestParam String tel,
                                     @ApiParam(value = "描述/备注", required = false) @RequestParam String userDesc,
-                                    @ApiParam(value = "状态值", required = true) @RequestParam Integer state) throws Exception {
+                                    @ApiParam(value = "状态值", required = true) @RequestParam Integer state) throws
+            Exception {
         logger.info("userName={},realName={},password={},email={},tel={},userDesc={},state={}", userName, realName,
                 password, email, tel, userDesc, state);
         if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(password) || state == null) {
