@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+/**
+ *
+ * 字典值实现
+ */
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
 public class SysDictValueServiceImpl implements SysDictValueService {
