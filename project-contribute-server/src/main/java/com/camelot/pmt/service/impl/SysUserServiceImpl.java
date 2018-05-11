@@ -111,4 +111,9 @@ public class SysUserServiceImpl implements SysUserService {
         }
         return null;
     }
+
+    @Override
+    public SysUser queryByUserName(String userName) {
+        return sysUserMapper.queryByUserName(userName);
+    }
 }

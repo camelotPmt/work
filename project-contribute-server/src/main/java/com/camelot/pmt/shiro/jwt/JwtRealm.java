@@ -1,8 +1,11 @@
 package com.camelot.pmt.shiro.jwt;
 
+import com.camelot.pmt.service.SysUserService;
+import com.camelot.pmt.utils.MD5Util;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -19,6 +22,8 @@ public class JwtRealm extends AuthorizingRealm {
 
     @Autowired
     private TokenUtil tokenUtil;
+    @Autowired
+    private SysUserService sysUserService;
 
     @Override
     public boolean supports(AuthenticationToken token) {
@@ -53,24 +58,21 @@ public class JwtRealm extends AuthorizingRealm {
 
         // 从token中获取用户名
         String username = tokenUtil.getUsernameFromToken(token);
+        String password = jwtToken.getPassword();
+
         // 根据用户名查询数据库
-
-        SysUser user = new SysUser();
-        user.setUserName(username);
-
-        user.setPassword("000000");
-
+        SysUser user=sysUserService.queryByUserName(username);
         // 用户不存在
         if (user == null) {
             throw new UnknownAccountException();
         }
-
         // 用户被禁用
-        /*
-         * if(user.getState()==0){
-         *
-         * throw new LockedAccountException(); }
-         */
+        if(user.getState()==0){
+          throw new LockedAccountException();
+        }
+        if(null!=jwtToken.getPrincipal()&&!user.getPassword().equalsIgnoreCase(MD5Util.saltGenerate(password,jwtToken.getPrincipal()))){
+            throw new UnknownAccountException();
+        }
 
         try {
             return new SimpleAuthenticationInfo(username, token, getName());

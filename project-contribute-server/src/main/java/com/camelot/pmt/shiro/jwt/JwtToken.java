@@ -22,6 +22,8 @@ public class JwtToken implements AuthenticationToken {
 
     private String token;
 
+    private String password;
+
     @Override
     public String getPrincipal() {
         return principal;

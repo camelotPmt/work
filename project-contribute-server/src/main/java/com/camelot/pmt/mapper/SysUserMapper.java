@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.camelot.pmt.model.SysUser;
+import org.apache.ibatis.annotations.Select;
 
 public interface SysUserMapper {
 
@@ -77,4 +78,7 @@ public interface SysUserMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(SysUser record);
+    @Select("select * from sys_user where user_name =#{userName}")
+    SysUser queryByUserName(String userName);
+
 }

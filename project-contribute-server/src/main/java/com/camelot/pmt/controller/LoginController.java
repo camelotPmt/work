@@ -47,15 +47,15 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody SysUser sysUser, HttpServletRequest request,
-            HttpServletResponse response, Device device) throws IOException {
+            HttpServletResponse response) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
         String username = sysUser.getUserName();
-        // String password = sysUser.getPassword();
+        String password = sysUser.getPassword();
 
         // 验证用户名密码成功后生成token
-        String token = tokenUtil.generateToken(username, device);
+        String token = tokenUtil.generateToken(username);
         // 构建JwtToken
-        JwtToken jwtToken = JwtToken.builder().token(token).principal(username).build();
+        JwtToken jwtToken = JwtToken.builder().token(token).principal(username).password(password).build();
 
         Subject subject = SecurityUtils.getSubject();
         try {

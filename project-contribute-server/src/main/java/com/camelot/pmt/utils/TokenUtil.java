@@ -1,9 +1,12 @@
 package com.camelot.pmt.utils;
 
+import com.camelot.pmt.model.SysUser;
+import com.camelot.pmt.service.SysUserService;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Component;
@@ -18,6 +21,7 @@ public class TokenUtil {
     static final String CLAIM_KEY_USERNAME = "sub";
     static final String CLAIM_KEY_AUDIENCE = "audience";
     static final String CLAIM_KEY_CREATED = "created";
+    static final String CLAIM_KEY_USERID="userId";
 
     private static final String AUDIENCE_UNKNOWN = "unknown";
     private static final String AUDIENCE_WEB = "web";
@@ -29,6 +33,9 @@ public class TokenUtil {
 
     @Value("${jwt.token.expiration}")
     private Long expiration;
+
+    @Autowired
+    private SysUserService sysUserService;
 
     public String getSecret() {
         return secret;
@@ -61,19 +68,25 @@ public class TokenUtil {
      *
      * @param username
      *            用户名
-     * @param device
-     *            org.springframework.mobile.device 设备判断对象
+     * @param
      */
-    public String generateToken(String username, Device device) {
+    public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
+        Map<String, Object> header = new HashMap<String, Object>();
+        header.put("typ", "JWT");
+        header.put("alg", "HS512");
+        SysUser sysUser = sysUserService.queryByUserName(username);
         claims.put(CLAIM_KEY_USERNAME, username);
-        claims.put(CLAIM_KEY_AUDIENCE, generateAudience(device));
+        if(sysUser!=null){
+            claims.put(CLAIM_KEY_USERID,sysUser.getId());
+        }
+        //  TODO 存放角色ID
         claims.put(CLAIM_KEY_CREATED, new Date());
-        return generateToken(claims);
+        return generateToken(header,claims);
     }
 
-    private String generateToken(Map<String, Object> claims) {
-        return Jwts.builder().setClaims(claims).setExpiration(generateExpirationDate())
+    private String generateToken(Map<String, Object> header,Map<String, Object> claims) {
+        return Jwts.builder().setHeader(header).setClaims(claims).setExpiration(generateExpirationDate())
                 .signWith(SignatureAlgorithm.HS512, this.secret).compact();
     }
 
@@ -100,19 +113,32 @@ public class TokenUtil {
     }
 
     /**
+     * 根据token获取用户
+     */
+    public SysUser getUserFromToken(String token) {
+        SysUser sysUser=new SysUser();
+        try {
+            final Claims claims = getClaimsFromToken(token);
+             sysUser.setUserName(claims.getSubject());
+             sysUser.setId((Integer) claims.get(CLAIM_KEY_USERID));
+        } catch (Exception e) {
+            sysUser = null;
+        }
+        return sysUser;
+    }
+    /**
      * 根据token获取用户名
      */
     public String getUsernameFromToken(String token) {
-        String username;
+       String userName="";
         try {
             final Claims claims = getClaimsFromToken(token);
-            username = claims.getSubject();
+            userName=(claims.getSubject());
         } catch (Exception e) {
-            username = null;
+            userName = null;
         }
-        return username;
+        return userName;
     }
-
     /**
      * 判断token失效时间是否到了
      */
@@ -152,6 +178,6 @@ public class TokenUtil {
     public String refreshToken(String token) {
         final Claims claims = this.getClaimsFromToken(token);
         claims.put(CLAIM_KEY_CREATED, new Date());
-        return generateToken(claims);
+        return generateToken((String)claims.get(CLAIM_KEY_USERNAME));
     }
 }

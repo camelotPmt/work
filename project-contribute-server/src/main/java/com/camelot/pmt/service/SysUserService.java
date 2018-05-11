@@ -55,5 +55,10 @@ public interface SysUserService {
      * @return
      */
     List<SysUser> selectAllByPage(Integer pageNum, Integer pageSize);
-
+    /**
+     * 根据用户名查询用户
+     * @param userName
+     * @return
+     */
+    SysUser queryByUserName(String userName);
 }
