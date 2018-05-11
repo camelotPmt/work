@@ -29,8 +29,8 @@ public class ExceptionHandle {
 
     private static final Logger log = LoggerFactory.getLogger(ExceptionHandle.class);
 
-    @ExceptionHandler({SQLException.class, Exception.class, JsonMappingException.class, ShiroException.class,
-            UnauthorizedException.class})
+    @ExceptionHandler({ SQLException.class, Exception.class, JsonMappingException.class, ShiroException.class,
+            UnauthorizedException.class })
     final ResponseEntity<Object> handleControllerApiException(HttpServletRequest request, Throwable ex) {
         HttpHeaders headers = new HttpHeaders();
         HttpStatus status = HttpStatus.BAD_REQUEST;
@@ -72,8 +72,7 @@ public class ExceptionHandle {
                     HttpStatus.UNAUTHORIZED);
         }
         if (ex instanceof HttpRequestMethodNotSupportedException) {
-            HttpRequestMethodNotSupportedException httpRequestMethodNotSupportedException =
-                    (HttpRequestMethodNotSupportedException) ex;
+            HttpRequestMethodNotSupportedException httpRequestMethodNotSupportedException = (HttpRequestMethodNotSupportedException) ex;
             log.error("HTTP信息异常：%s", httpRequestMethodNotSupportedException);
             return new ResponseEntity<>("HTTP请求方式错误：" + ex.getMessage(), headers, status);
         }

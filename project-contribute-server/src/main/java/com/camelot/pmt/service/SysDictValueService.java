@@ -1,9 +1,6 @@
 package com.camelot.pmt.service;
 
-
-import com.camelot.pmt.model.SysDictTypeDTO;
 import com.camelot.pmt.model.SysDictValue;
-import com.github.pagehelper.PageInfo;
 
 /**
  * @Author: gcp

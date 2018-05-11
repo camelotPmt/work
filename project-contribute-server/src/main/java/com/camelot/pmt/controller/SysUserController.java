@@ -40,8 +40,8 @@ public class SysUserController {
      */
     @GetMapping("/by-id")
     @ApiOperation(value = "根据id查询用户", notes = "根据id查询用户")
-    @ApiImplicitParams({@ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "query", dataType
-            = "int")})
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "query", dataType = "int") })
     public ResponseEntity<?> selectByPrimaryKey(@ApiIgnore SysUser sysUser) {
         log.info("id={}", sysUser.getId());
         sysUser = sysUserService.selectByPrimaryKey(sysUser.getId());
@@ -60,8 +60,8 @@ public class SysUserController {
      */
     @DeleteMapping("/by-id")
     @ApiOperation(value = "根据id删除用户", notes = "根据id删除用户")
-    @ApiImplicitParams({@ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "query", dataType
-            = "int")})
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "query", dataType = "int") })
     public ResponseEntity<?> deleteByPrimaryKey(@ApiIgnore SysUser sysUser) {
         log.info("id={}", sysUser.getId());
         int num = sysUserService.deleteByPrimaryKey(sysUser.getId());
@@ -81,27 +81,19 @@ public class SysUserController {
     @PostMapping("/add")
     @ApiOperation(value = "增加用户信息", notes = "增加用户信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "userName", value = "用户名", required = true, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "realName", value = "真实名", required = false, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "password", value = "密码", required = true, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "email", value = "电子邮件", required = false, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "tel", value = "电话", required = false, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "userDesc", value = "描述/备注", required = false, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "state", value = "状态值", required = true, paramType = "query", dataType
-                    = "int"),})
+            @ApiImplicitParam(name = "userName", value = "用户名", required = true, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "realName", value = "真实名", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "password", value = "密码", required = true, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "email", value = "电子邮件", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "tel", value = "电话", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "userDesc", value = "描述/备注", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "state", value = "状态值", required = true, paramType = "query", dataType = "int"), })
     public ResponseEntity<?> insert(@ApiIgnore SysUser sysUser) {
         log.info("userName={},realName={},password={},email={},tel={},userDesc={},state={}", sysUser.getUserName(),
-                sysUser.getRealName(), sysUser.getPassword(), sysUser.getEmail(), sysUser.getTel(), sysUser
-                        .getUserDesc(), sysUser.getState());
-        int num = sysUserService.insert(sysUser.getUserName(),
-                sysUser.getRealName(), sysUser.getPassword(), sysUser.getEmail(), sysUser.getTel(), sysUser
-                        .getUserDesc(), sysUser.getState());
+                sysUser.getRealName(), sysUser.getPassword(), sysUser.getEmail(), sysUser.getTel(),
+                sysUser.getUserDesc(), sysUser.getState());
+        int num = sysUserService.insert(sysUser.getUserName(), sysUser.getRealName(), sysUser.getPassword(),
+                sysUser.getEmail(), sysUser.getTel(), sysUser.getUserDesc(), sysUser.getState());
         if (num > 0) {
             return ResponseEntity.ok("添加成功");
         } else {
@@ -118,24 +110,16 @@ public class SysUserController {
     @PutMapping("/by-id")
     @ApiOperation(value = "根据id更新用户信息", notes = "根据id更新用户信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "query", dataType
-                    = "int"),
-            @ApiImplicitParam(name = "realName", value = "真实名", required = false, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "password", value = "密码", required = false, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "email", value = "电子邮件", required = false, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "tel", value = "电话", required = false, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "userDesc", value = "描述/备注", required = false, paramType = "query", dataType
-                    = "String"),
-            @ApiImplicitParam(name = "state", value = "状态值", required = false, paramType = "query", dataType
-                    = "int"),})
+            @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "query", dataType = "int"),
+            @ApiImplicitParam(name = "realName", value = "真实名", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "password", value = "密码", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "email", value = "电子邮件", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "tel", value = "电话", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "userDesc", value = "描述/备注", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "state", value = "状态值", required = false, paramType = "query", dataType = "int"), })
     public ResponseEntity<?> updateByPrimaryKeySelective(@ApiIgnore SysUser sysUser) {
-        log.info("realName={},password={},email={},tel={},userDesc={},state={}",
-                sysUser.getRealName(), sysUser.getPassword(), sysUser.getEmail(), sysUser.getTel(), sysUser
-                        .getUserDesc(), sysUser.getState());
+        log.info("realName={},password={},email={},tel={},userDesc={},state={}", sysUser.getRealName(),
+                sysUser.getPassword(), sysUser.getEmail(), sysUser.getTel(), sysUser.getUserDesc(), sysUser.getState());
         int num = sysUserService.updateByPrimaryKeySelective(sysUser);
         if (num > 0) {
             return ResponseEntity.ok("更新成功");

@@ -38,10 +38,10 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
         if (user == null && user.getId() == null) {
             throw new RuntimeException("未获取到当前登录人");
         }
-        //查询此字典码是否已经存在
+        // 查询此字典码是否已经存在
         SysDictType sysDictType1 = sysDictTypeMapper.selectByTypeCode(sysDictType.getTypeCode());
         if (null != sysDictType1) {
-            //此编码已经存在
+            // 此编码已经存在
             throw new IllegalArgumentException("字典类型编码已存在！");
         }
         sysDictType.setCreateBy(user.getId());
@@ -51,7 +51,7 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
         sysDictType.setUpdateTime(new Date());
         int result = sysDictTypeMapper.insert(sysDictType);
         if (result == 1) {
-            //日志
+            // 日志
             return true;
         }
         return false;
@@ -60,15 +60,16 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
     /**
      * 删除字典类型---逻辑删除
      *
-     * @param id code
+     * @param id
+     *            code
      */
     @Override
     public boolean delete(Integer id, String code) {
-        //修改此类型下所有字典值
-        //修改此编码下所有字典值类型
+        // 修改此类型下所有字典值
+        // 修改此编码下所有字典值类型
         int result = sysDictTypeMapper.updateStateByPrimaryKey(id);
         if (result == 1) {
-            //日志
+            // 日志
             return true;
         }
         return false;
@@ -87,17 +88,17 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
         if (user == null && user.getId() == null) {
             throw new RuntimeException("未获取到当前登录人");
         }
-        //查询此字典码是否已经存在
+        // 查询此字典码是否已经存在
         SysDictType sysDictType1 = sysDictTypeMapper.selectByTypeCode(sysDictType.getTypeCode());
         if (null != sysDictType1) {
-            //此编码已经存在
+            // 此编码已经存在
             throw new IllegalArgumentException("字典类型编码已存在！");
         }
         sysDictType.setUpdateBy(user.getId());
         sysDictType.setUpdateTime(new Date());
         int result = sysDictTypeMapper.updateByPrimaryKeySelective(sysDictType);
         if (result == 1) {
-            //日志
+            // 日志
             return true;
         }
         return false;
@@ -120,7 +121,7 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
      * @return
      */
     @Override
-    public PageInfo list(SysDictTypeDTO sysDictSysDictTypeDTO) {
+    public PageInfo<SysDictType> list(SysDictTypeDTO sysDictSysDictTypeDTO) {
         if (null == sysDictSysDictTypeDTO) {
             throw new IllegalArgumentException("请求参数异常！");
         }
@@ -135,7 +136,7 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
         // 查询产品list
         List<SysDictType> sysDictTypeList = sysDictTypeMapper.selectSelective(sysDictSysDictTypeDTO);
         // pageHelper的收尾
-        PageInfo pageResult = new PageInfo(sysDictTypeList);
+        PageInfo<SysDictType> pageResult = new PageInfo<SysDictType>(sysDictTypeList);
         pageResult.setList(sysDictTypeList);
         return pageResult;
     }

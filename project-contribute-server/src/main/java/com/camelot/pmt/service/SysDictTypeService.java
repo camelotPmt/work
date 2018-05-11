@@ -18,5 +18,5 @@ public interface SysDictTypeService {
 
     SysDictType get(Integer id);
 
-    PageInfo list(SysDictTypeDTO sysDictTypeVO);
+    PageInfo<?> list(SysDictTypeDTO sysDictTypeVO);
 }

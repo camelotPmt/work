@@ -34,7 +34,6 @@ public interface SysDictValueMapper {
      */
     int updateByPrimaryKey(SysDictValue record);
 
-
     int updateStateByPrimaryKey(Integer id);
 
 }

@@ -28,7 +28,8 @@ public class SysRoleServiceImpl implements SysRoleService {
     /**
      * 添加角色
      *
-     * @param sysRole SysRole
+     * @param sysRole
+     *            SysRole
      * @return boolean
      */
     @Override
@@ -37,9 +38,9 @@ public class SysRoleServiceImpl implements SysRoleService {
         // 获取当前登录人
         SysUser user = new SysUser();
         user.setId(1);
-//        if (user == null && user.getId() == null) {
-//            throw new RuntimeException("未获取到当前登录人");
-//        }
+        // if (user == null && user.getId() == null) {
+        // throw new RuntimeException("未获取到当前登录人");
+        // }
         sysRole.setCreatedBy(user.getId());
         sysRole.setUpdatedBy(user.getId());
         int insert = sysRoleMapper.insert(sysRole);
@@ -53,7 +54,8 @@ public class SysRoleServiceImpl implements SysRoleService {
     /**
      * 删除角色
      *
-     * @param id id
+     * @param id
+     *            id
      * @return boolean
      */
     @Override
@@ -69,7 +71,8 @@ public class SysRoleServiceImpl implements SysRoleService {
     /**
      * 根据id修改角色
      *
-     * @param sysRole SysRole
+     * @param sysRole
+     *            SysRole
      * @return boolean
      */
     @Override
@@ -77,9 +80,9 @@ public class SysRoleServiceImpl implements SysRoleService {
         // 获取当前登录人
         SysUser user = new SysUser();
         user.setId(1);
-//        if (user == null && user.getId() == null) {
-//            throw new RuntimeException("未获取到当前登录人");
-//        }
+        // if (user == null && user.getId() == null) {
+        // throw new RuntimeException("未获取到当前登录人");
+        // }
         sysRole.setUpdatedBy(user.getId());
         int update = sysRoleMapper.updateByIdSelective(sysRole);
         if (update == 1) {

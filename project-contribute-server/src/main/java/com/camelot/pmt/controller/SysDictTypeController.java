@@ -1,6 +1,5 @@
 package com.camelot.pmt.controller;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -42,16 +41,15 @@ public class SysDictTypeController {
     /**
      * 添加字典类型
      *
-     * @param sysDictType 字典类型实体
+     * @param sysDictType
+     *            字典类型实体
      */
     @PostMapping(value = "/save")
     @ApiOperation(value = "添加字典类型", notes = "添加字典类型")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "typeCode", value = "字典类型编码", required = true, paramType = "query", dataType =
-                    "String"),
-            @ApiImplicitParam(name = "typeName", value = "字典类型名称", required = true, paramType = "query", dataType =
-                    "String"),})
-    public ResponseEntity save(@ApiIgnore SysDictType sysDictType) {
+            @ApiImplicitParam(name = "typeCode", value = "字典类型编码", required = true, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "typeName", value = "字典类型名称", required = true, paramType = "query", dataType = "String"), })
+    public ResponseEntity<String> save(@ApiIgnore SysDictType sysDictType) {
         boolean flag = sysDictTypeService.add(sysDictType);
         if (flag) {
             return ResponseEntity.ok("添加成功！");
@@ -62,15 +60,15 @@ public class SysDictTypeController {
     /**
      * 删除字典类型
      *
-     * @param id code 字典类型id 编码
+     * @param id
+     *            code 字典类型id 编码
      */
     @DeleteMapping(value = "/")
     @ApiOperation(value = "删除字典类型", notes = "删除字典类型")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "字典类型id", required = true, paramType = "query", dataType = "int"),
-            @ApiImplicitParam(name = "code", value = "字典类型编码", required = true, paramType = "query", dataType =
-                    "String"),})
-    public ResponseEntity delete(Integer id, String code) {
+            @ApiImplicitParam(name = "code", value = "字典类型编码", required = true, paramType = "query", dataType = "String"), })
+    public ResponseEntity<String> delete(Integer id, String code) {
         boolean flag = sysDictTypeService.delete(id, code);
         if (flag) {
             return ResponseEntity.ok("删除成功");
@@ -81,15 +79,16 @@ public class SysDictTypeController {
     /**
      * 编辑字典类型
      *
-     * @param sysDictType 字典类型实体
+     * @param sysDictType
+     *            字典类型实体
      */
     @PostMapping("/update")
     @ApiOperation(value = "编辑字典类型", notes = "编辑字典类型")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "id", value = "字典类型id", required = true, paramType = "query", dataType = "int"),
             @ApiImplicitParam(name = "typeCode", value = "字典类型编码", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "typeName", value = "字典类型名称", paramType = "query", dataType = "String"),})
-    public ResponseEntity update(@ApiIgnore SysDictType sysDictType) {
+            @ApiImplicitParam(name = "typeName", value = "字典类型名称", paramType = "query", dataType = "String"), })
+    public ResponseEntity<String> update(@ApiIgnore SysDictType sysDictType) {
         boolean flag = sysDictTypeService.update(sysDictType);
         if (flag) {
             return ResponseEntity.ok("修改成功");
@@ -100,12 +99,13 @@ public class SysDictTypeController {
     /**
      * 查询单个字典类型
      *
-     * @param id 字典类型id
+     * @param id
+     *            字典类型id
      */
     @GetMapping("/dict-type")
     @ApiOperation(value = "查询单个字典类型", notes = "查询单个字典类型")
     @ApiImplicitParam(name = "id", value = "字典类型id", required = true, paramType = "query", dataType = "int")
-    public ResponseEntity get(Integer id) {
+    public ResponseEntity<SysDictType> get(Integer id) {
         SysDictType sysDictType = sysDictTypeService.get(id);
         return ResponseEntity.ok(sysDictType);
     }
@@ -113,19 +113,18 @@ public class SysDictTypeController {
     /**
      * 分页条件查询字典类型编码
      *
-     * @param sysDictTypeVO 字典业务实体
+     * @param sysDictTypeVO
+     *            字典业务实体
      */
     @PostMapping("/list")
     @ApiOperation(value = "分页条件查询字典类型列表", notes = "分页条件查询字典类型列表")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, paramType = "query", dataType = "int"),
             @ApiImplicitParam(name = "pageSize", value = "页大小", required = true, paramType = "query", dataType = "int"),
-            @ApiImplicitParam(name = "typeCode", value = "字典类型编码", required = false, paramType = "query", dataType =
-                    "String"),
-            @ApiImplicitParam(name = "typeName", value = "字典类型名称", required = false, paramType = "query", dataType =
-                    "String"),})
-    public ResponseEntity list(@ApiIgnore SysDictTypeDTO sysDictTypeVO) {
-        PageInfo sysDictTypeList = sysDictTypeService.list(sysDictTypeVO);
+            @ApiImplicitParam(name = "typeCode", value = "字典类型编码", required = false, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "typeName", value = "字典类型名称", required = false, paramType = "query", dataType = "String"), })
+    public ResponseEntity<PageInfo<?>> list(@ApiIgnore SysDictTypeDTO sysDictTypeVO) {
+        PageInfo<?> sysDictTypeList = sysDictTypeService.list(sysDictTypeVO);
         return ResponseEntity.ok(sysDictTypeList);
     }
 
