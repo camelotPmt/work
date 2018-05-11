@@ -3,6 +3,7 @@ package com.camelot.pmt.service.impl;
 import com.camelot.pmt.mapper.SysDictTypeMapper;
 import com.camelot.pmt.model.SysDictType;
 import com.camelot.pmt.model.SysDictTypeDTO;
+import com.camelot.pmt.model.SysUser;
 import com.camelot.pmt.service.SysDictTypeService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -27,12 +28,20 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
      */
     @Override
     public Integer add(SysDictType sysDictType) throws IllegalArgumentException {
+        // 获取当前登录人
+        SysUser user = new SysUser();
+        user.setId(1);
+        if (user == null && user.getId() == null) {
+            throw new RuntimeException("未获取到当前登录人");
+        }
         //查询此字典码是否已经存在
         SysDictType sysDictType1 = sysDictTypeMapper.selectByTypeCode(sysDictType.getTypeCode());
         if(null != sysDictType1){
             //此编码已经存在
             throw new IllegalArgumentException("字典类型编码已存在！");
         }
+        sysDictType.setCreateBy(user.getId());
+        sysDictType.setUpdateBy(user.getId());
         sysDictType.setState(1);
         sysDictType.setCreateTime(new Date());
         sysDictType.setUpdateTime(new Date());
@@ -57,12 +66,19 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
      */
     @Override
     public Integer update(SysDictType sysDictType) {
+        // 获取当前登录人
+        SysUser user = new SysUser();
+        user.setId(1);
+        if (user == null && user.getId() == null) {
+            throw new RuntimeException("未获取到当前登录人");
+        }
         //查询此字典码是否已经存在
         SysDictType sysDictType1 = sysDictTypeMapper.selectByTypeCode(sysDictType.getTypeCode());
         if(null != sysDictType1){
             //此编码已经存在
             throw new IllegalArgumentException("字典类型编码已存在！");
         }
+        sysDictType.setUpdateBy(user.getId());
         sysDictType.setUpdateTime(new Date());
         return sysDictTypeMapper.updateByPrimaryKeySelective(sysDictType);
     }

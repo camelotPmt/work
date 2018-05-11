@@ -40,8 +40,6 @@ public class SysDictTypeController {
             @ApiImplicitParam(name = "typeCode", value = "字典类型编码", required = true, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "typeName", value = "字典类型名称", required = true, paramType = "query", dataType = "String"), })
     public ResponseEntity add(@ApiIgnore SysDictType sysDictType){
-        sysDictType.setCreateBy(000);
-        sysDictType.setUpdateBy(000);
         Integer result = sysDictTypeService.add(sysDictType);
         if(result > 0){
             return ResponseEntity.ok("添加成功！");
