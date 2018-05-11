@@ -1,7 +1,7 @@
 package com.camelot.pmt.controller;
+
 import com.camelot.pmt.model.SysDictValue;
 import com.camelot.pmt.service.SysDictValueService;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
