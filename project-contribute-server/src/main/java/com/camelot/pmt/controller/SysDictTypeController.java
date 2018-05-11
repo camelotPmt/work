@@ -29,7 +29,7 @@ import java.util.Date;
  * @Description: 系统数据字典类型controller
  */
 @RestController
-@RequestMapping("/sysDictType")
+@RequestMapping("/sys-dict-type")
 public class SysDictTypeController {
 
     @Autowired
@@ -40,12 +40,12 @@ public class SysDictTypeController {
      *
      * @param sysDictType 字典类型实体
      */
-    @PostMapping(value = "/add")
+    @PostMapping(value = "/save")
     @ApiOperation(value = "添加字典类型", notes = "添加字典类型")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "typeCode", value = "字典类型编码", required = true, paramType = "query", dataType = "String"),
             @ApiImplicitParam(name = "typeName", value = "字典类型名称", required = true, paramType = "query", dataType = "String"),})
-    public ResponseEntity add(@ApiIgnore SysDictType sysDictType) {
+    public ResponseEntity save(@ApiIgnore SysDictType sysDictType) {
         boolean flag = sysDictTypeService.add(sysDictType);
         if (flag) {
             return ResponseEntity.ok("添加成功！");
@@ -95,7 +95,7 @@ public class SysDictTypeController {
      *
      * @param id 字典类型id
      */
-    @GetMapping("/sys-dict-type")
+    @GetMapping("/dict-type")
     @ApiOperation(value = "查询单个字典类型", notes = "查询单个字典类型")
     @ApiImplicitParam(name = "id", value = "字典类型id", required = true, paramType = "query", dataType = "int")
     public ResponseEntity get(Integer id) {
