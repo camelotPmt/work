@@ -10,35 +10,30 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>project-contribute-server</module>
-        <!--<module>project-contribute-web</module>-->
     </modules>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.9.RELEASE</version>
         <relativePath/>
     </parent>
-
-    
     <!--maven 依赖-->
     <!--<repositories>-->
-        <!--<repository>-->
-            <!--<snapshots>-->
-                <!--<enabled>false</enabled>-->
-            <!--</snapshots>-->
-            <!--<id>didi</id>-->
-            <!--<name>libs-release</name>-->
-            <!--<url>http://artifactory.intra.xiaojukeji.com:80/artifactory/libs-release</url>-->
-        <!--</repository>-->
-        <!--<repository>-->
-            <!--<snapshots />-->
-            <!--<id>snapshots</id>-->
-            <!--<name>libs-snapshot</name>-->
-            <!--<url>http://artifactory.intra.xiaojukeji.com:80/artifactory/libs-snapshot</url>-->
-        <!--</repository>-->
+    <!--<repository>-->
+    <!--<snapshots>-->
+    <!--<enabled>false</enabled>-->
+    <!--</snapshots>-->
+    <!--<id>didi</id>-->
+    <!--<name>libs-release</name>-->
+    <!--<url>http://artifactory.intra.xiaojukeji.com:80/artifactory/libs-release</url>-->
+    <!--</repository>-->
+    <!--<repository>-->
+    <!--<snapshots />-->
+    <!--<id>snapshots</id>-->
+    <!--<name>libs-snapshot</name>-->
+    <!--<url>http://artifactory.intra.xiaojukeji.com:80/artifactory/libs-snapshot</url>-->
+    <!--</repository>-->
     <!--</repositories>-->
-
     <!--基础设置-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -47,8 +42,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
     </properties>
-
-
     <build>
         <plugins>
             <plugin>
@@ -68,5 +61,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

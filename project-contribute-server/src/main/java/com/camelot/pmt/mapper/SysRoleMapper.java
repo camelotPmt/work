@@ -1,42 +1,48 @@
 package com.camelot.pmt.mapper;
 
+import java.util.List;
 
 import com.camelot.pmt.model.SysRole;
 
 public interface SysRoleMapper {
-    /**
-     *
-     * @mbggenerated
-     */
-    int deleteByPrimaryKey(Integer id);
 
     /**
+     * 添加角色
      *
-     * @mbggenerated
+     * @param sysRole SysRole
+     * @return int
      */
-    int insert(SysRole record);
+    int insert(SysRole sysRole);
 
     /**
+     * 根据id删除角色
      *
-     * @mbggenerated
+     * @param id id
+     * @return int
      */
-    int insertSelective(SysRole record);
+    int deleteByID(Integer id);
 
     /**
+     * 根据id修改角色
      *
-     * @mbggenerated
+     * @param sysRole SysRole
+     * @return int
      */
-    SysRole selectByPrimaryKey(Integer id);
+    int updateByIdSelective(SysRole sysRole);
 
     /**
+     * 根据id查看角色详情
      *
-     * @mbggenerated
+     * @param id id
+     * @return SysRole
      */
-    int updateByPrimaryKeySelective(SysRole record);
+    SysRole selectById(Integer id);
 
     /**
+     * 查看所有角色
      *
-     * @mbggenerated
+     * @return SysRole
      */
-    int updateByPrimaryKey(SysRole record);
+    List<SysRole> selectAll();
+
 }

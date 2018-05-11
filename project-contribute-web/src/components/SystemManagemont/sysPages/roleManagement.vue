@@ -39,36 +39,34 @@
                 },
                 columns1: [
                     {
-                        title: '工号',
-                        key: 'userId'
+                        title: '编号',
+                        key: 'id'
                     },
                     {
-                        title: '用户名',
-                        key: 'username'
+                        title: '名称',
+                        key: 'roleName'
                     },
                     {
-                        title: '登录名',
-                        key: 'loginCode'
-                    },
-                    {
-                        title: '部门',
-                        key: 'section1'
-                    },
-                    {
-                        title: '角色',
-                        key: 'section2'
-                    },
-                    {
-                        title: '电话',
-                        key: 'phone'
+                        title: '创建人',
+                        key: 'createdBy'
                     },
                     {
                         title: '状态',
-                        key: 'section3'
+                        key: 'state',
+                        render: (h, params) => {
+                            const row = params.row;
+                            const text = row.state == 0 ? '禁用' : '激活';
+                            const color = row.state == 0 ? '#868686': '#0459ab';
+                            return h('Tag', {
+                                props: {
+                                    color: color
+                                }
+                            }, text); 
+                        }
                     },
                     {
                         title: '操作',
-                        key: 'section4'
+                        key: 'operation',
                     }
                 ],
                 source: []

@@ -31,6 +31,11 @@ spring:
   mvc:
       async:
         request-timeout: 500000
+  redis:
+      host: 120.78.165.147
+      port: 6379
+      database: 0
+      password:
 
   profiles:
       active: dev
@@ -46,15 +51,16 @@ mybatis:
   configuration:
     mapUnderscoreToCamelCase: true
 
+swagger:
+    host: localhost:9000
 #JWT配置
-##认证名称
 jwt:
-   header: authorization
-##加密向量
-   secret: 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-##过期时间一天(秒)
-   expiration: 86400
-##Tokenu前缀
-   token:
-      head: Bearer
+#  header: Authorization
+  token:
+    secret: mySecret
+#    7天
+#    expiration: 604800
+
+#    一天
+    expiration: 86400
 

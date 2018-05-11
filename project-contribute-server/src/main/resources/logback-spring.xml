@@ -6,7 +6,8 @@
 
     <property name="LOG_HOME_PROD" value=".logs/project-contribute-server"/>
 
-    <appender name="project-contribute-server-dev" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="project-contribute-server-dev"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME_DEV}/pmt-dev.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_HOME_DEV}/pmt-dev.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -19,7 +20,8 @@
     </appender>
 
     <!-- 输出日志到文件 -->
-    <appender name="project-contribute-server-stage" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="project-contribute-server-stage"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME_STAGE}/pmt-stage.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_HOME_STAGE}/pmt-stage.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -31,7 +33,8 @@
 
     </appender>
 
-    <appender name="project-contribute-server-prod" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="project-contribute-server-prod"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME_PROD}/pmt-prod.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_HOME_PROD}/pmt-prod.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -49,7 +52,6 @@
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-
 
 
     <springProfile name="stage">
