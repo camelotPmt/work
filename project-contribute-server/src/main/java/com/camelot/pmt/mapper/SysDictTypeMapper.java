@@ -2,6 +2,7 @@ package com.camelot.pmt.mapper;
 
 
 import com.camelot.pmt.model.SysDictType;
+import com.camelot.pmt.model.SysDictTypeDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -44,5 +45,9 @@ public interface SysDictTypeMapper {
      */
     int updateByPrimaryKey(SysDictType record);
 
-    List<SysDictType> selectSelective(SysDictType sysDictType);
+    List<SysDictType> selectSelective(SysDictTypeDTO sysDictTypeVO);
+
+    SysDictType selectByTypeCode(String typeCode);
+
+    int updateStateByPrimaryKey(Integer id);
 }

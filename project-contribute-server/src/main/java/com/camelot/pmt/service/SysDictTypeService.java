@@ -1,8 +1,8 @@
 package com.camelot.pmt.service;
 
 import com.camelot.pmt.model.SysDictType;
-
-import java.util.List;
+import com.camelot.pmt.model.SysDictTypeDTO;
+import com.github.pagehelper.PageInfo;
 
 public interface SysDictTypeService {
     Integer add(SysDictType sysDictType);
@@ -13,5 +13,5 @@ public interface SysDictTypeService {
 
     SysDictType get(Integer id);
 
-    List<SysDictType> list(SysDictType sysDictType);
+    PageInfo list(SysDictTypeDTO sysDictTypeVO);
 }
