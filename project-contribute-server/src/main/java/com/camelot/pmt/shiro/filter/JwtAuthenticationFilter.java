@@ -1,21 +1,23 @@
 package com.camelot.pmt.shiro.filter;
 
-import com.camelot.pmt.shiro.jwt.JwtToken;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.filter.authc.AuthenticatingFilter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.filter.authc.AuthenticatingFilter;
+
+import com.camelot.pmt.shiro.jwt.JwtToken;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JwtAuthenticationFilter extends AuthenticatingFilter {
 
@@ -57,13 +59,13 @@ public class JwtAuthenticationFilter extends AuthenticatingFilter {
 
     @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request,
-            ServletResponse response) throws Exception {
+                                     ServletResponse response) throws Exception {
         return true;
     }
 
     @Override
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException ae, ServletRequest request,
-            ServletResponse response) {
+                                     ServletResponse response) {
         HttpServletResponse servletResponse = (HttpServletResponse) response;
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("code", HttpServletResponse.SC_UNAUTHORIZED);

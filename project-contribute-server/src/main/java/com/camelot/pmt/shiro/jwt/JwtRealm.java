@@ -1,14 +1,19 @@
 package com.camelot.pmt.shiro.jwt;
 
-import com.camelot.pmt.model.SysUser;
-import com.camelot.pmt.utils.TokenUtil;
-import com.google.common.collect.Sets;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.camelot.pmt.model.SysUser;
+import com.camelot.pmt.utils.TokenUtil;
+import com.google.common.collect.Sets;
 
 public class JwtRealm extends AuthorizingRealm {
 

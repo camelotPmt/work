@@ -1,15 +1,16 @@
 package com.camelot.pmt.utils;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class TokenUtil {
@@ -58,10 +59,8 @@ public class TokenUtil {
     /**
      * 生成token
      *
-     * @param username
-     *            用户名
-     * @param device
-     *            org.springframework.mobile.device 设备判断对象
+     * @param username 用户名
+     * @param device   org.springframework.mobile.device 设备判断对象
      */
     public String generateToken(String username, Device device) {
         Map<String, Object> claims = new HashMap<>();

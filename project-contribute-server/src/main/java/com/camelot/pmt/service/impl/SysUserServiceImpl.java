@@ -1,12 +1,13 @@
 package com.camelot.pmt.service.impl;
 
-import com.camelot.pmt.mapper.SysUserMapper;
-import com.camelot.pmt.model.SysUser;
-import com.camelot.pmt.service.SysUserService;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import com.camelot.pmt.mapper.SysUserMapper;
+import com.camelot.pmt.model.SysUser;
+import com.camelot.pmt.service.SysUserService;
 
 /**
  * @author qiaodj
@@ -53,7 +54,7 @@ public class SysUserServiceImpl implements SysUserService {
      */
     @Override
     public int insert(String userName, String realName, String password, String email, String tel, String userDesc,
-            Integer state) {
+                      Integer state) {
         // 创建人修改人应从session中获取暂留
         return sysUserMapper.insert(userName, realName, password, email, tel, userDesc, state, 1, new Date(), 1,
                 new Date());

@@ -1,6 +1,9 @@
 package com.camelot.pmt.config;
 
-import com.fasterxml.jackson.databind.JsonMappingException;
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.shiro.ShiroException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.slf4j.Logger;
@@ -14,8 +17,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 /**
  * Created by daiyang on 2018/5/8.
@@ -25,8 +27,8 @@ public class ExceptionHandle {
 
     private static final Logger log = LoggerFactory.getLogger(ExceptionHandle.class);
 
-    @ExceptionHandler({ SQLException.class, Exception.class, JsonMappingException.class, ShiroException.class,
-            UnauthorizedException.class })
+    @ExceptionHandler({SQLException.class, Exception.class, JsonMappingException.class, ShiroException.class,
+            UnauthorizedException.class})
     final ResponseEntity<Object> handleControllerApiException(HttpServletRequest request, Throwable ex) {
         HttpHeaders headers = new HttpHeaders();
         HttpStatus status = HttpStatus.BAD_REQUEST;

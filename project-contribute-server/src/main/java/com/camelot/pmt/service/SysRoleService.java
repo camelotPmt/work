@@ -1,8 +1,8 @@
 package com.camelot.pmt.service;
 
-import com.camelot.pmt.model.SysRole;
-
 import java.util.List;
+
+import com.camelot.pmt.model.SysRole;
 
 /**
  * 系统角色
@@ -15,17 +15,15 @@ public interface SysRoleService {
     /**
      * 添加角色
      *
-     * @param sysRole
-     *            SysRole
+     * @param sysRole SysRole
      * @return boolean
      */
     boolean insertSysRole(SysRole sysRole);
 
     /**
      * 删除角色
-     * 
-     * @param id
-     *            id
+     *
+     * @param id id
      * @return boolean
      */
     boolean deleteById(Integer id);
@@ -33,8 +31,7 @@ public interface SysRoleService {
     /**
      * 根据id修改角色
      *
-     * @param sysRole
-     *            SysRole
+     * @param sysRole SysRole
      * @return boolean
      */
     boolean updateById(SysRole sysRole);

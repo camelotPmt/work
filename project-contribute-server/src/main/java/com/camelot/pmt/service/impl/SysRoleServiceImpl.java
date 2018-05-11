@@ -1,15 +1,16 @@
 package com.camelot.pmt.service.impl;
 
-import com.camelot.pmt.mapper.SysRoleMapper;
-import com.camelot.pmt.model.SysRole;
-import com.camelot.pmt.model.SysUser;
-import com.camelot.pmt.service.SysRoleService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.camelot.pmt.mapper.SysRoleMapper;
+import com.camelot.pmt.model.SysRole;
+import com.camelot.pmt.model.SysUser;
+import com.camelot.pmt.service.SysRoleService;
 
 /**
  * 系统角色
@@ -27,8 +28,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     /**
      * 添加角色
      *
-     * @param sysRole
-     *            SysRole
+     * @param sysRole SysRole
      * @return boolean
      */
     @Override
@@ -53,8 +53,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     /**
      * 删除角色
      *
-     * @param id
-     *            id
+     * @param id id
      * @return boolean
      */
     @Override
@@ -70,8 +69,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     /**
      * 根据id修改角色
      *
-     * @param sysRole
-     *            SysRole
+     * @param sysRole SysRole
      * @return boolean
      */
     @Override
