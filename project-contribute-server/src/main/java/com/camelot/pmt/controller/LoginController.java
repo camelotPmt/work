@@ -47,7 +47,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody SysUser sysUser, HttpServletRequest request,
-                                                     HttpServletResponse response, Device device) throws IOException {
+            HttpServletResponse response, Device device) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
         String username = sysUser.getUserName();
         // String password = sysUser.getPassword();

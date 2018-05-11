@@ -37,5 +37,5 @@ public interface SysUserService {
      * @return
      */
     int insert(String userName, String realName, String password, String email, String tel, String userDesc,
-               Integer state);
+            Integer state);
 }
