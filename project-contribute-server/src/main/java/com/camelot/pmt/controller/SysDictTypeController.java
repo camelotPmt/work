@@ -5,6 +5,7 @@ import com.camelot.pmt.model.SysDictType;
 import com.camelot.pmt.model.SysDictTypeDTO;
 import com.camelot.pmt.service.SysDictTypeService;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -30,6 +31,7 @@ import java.util.Date;
  */
 @RestController
 @RequestMapping("/sys-dict-type")
+@Api(value = "数据字典类型", description = "数据字典类型")
 public class SysDictTypeController {
 
     @Autowired
