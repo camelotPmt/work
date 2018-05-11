@@ -106,7 +106,7 @@ public class SysDictTypeController {
     /**
      * 分页条件查询字典类型编码
      *
-     * @param sysDictTypeVO 字典业务
+     * @param sysDictTypeVO 字典业务实体
      */
     @PostMapping("/list")
     @ApiOperation(value = "分页条件查询字典类型列表", notes = "分页条件查询字典类型列表")
