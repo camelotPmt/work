@@ -77,7 +77,7 @@ public class SysUserServiceImpl implements SysUserService {
             return 0;
         }
         //MD5加盐加密
-        String mD5GeneratePassword = MD5Util.generate(password);
+        String mD5GeneratePassword = MD5Util.MD5(password);
         // 创建人修改人应从session中获取暂留
         return sysUserMapper.insert(userName, realName, mD5GeneratePassword, email, tel, userDesc, state, 1, new Date
                         (), 1,
