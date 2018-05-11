@@ -11,6 +11,10 @@ import com.camelot.pmt.model.SysDictValue;
 import com.camelot.pmt.model.SysUser;
 import com.camelot.pmt.service.SysDictValueService;
 
+/**
+ *
+ * 字典值实现
+ */
 @Service
 public class SysDictValueServiceImpl implements SysDictValueService {
 
