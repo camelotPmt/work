@@ -1,8 +1,9 @@
 package com.camelot.pmt.mapper;
 
-import java.util.List;
 
 import com.camelot.pmt.model.SysRole;
+
+import java.util.List;
 
 public interface SysRoleMapper {
 

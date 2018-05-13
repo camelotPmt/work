@@ -1,18 +1,18 @@
 package com.camelot.pmt.service.impl;
 
-import java.util.Date;
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.camelot.pmt.mapper.SysUserMapper;
 import com.camelot.pmt.model.SysUser;
 import com.camelot.pmt.service.SysUserService;
 import com.camelot.pmt.utils.MD5Util;
 import com.github.pagehelper.PageHelper;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author qiaodj
@@ -76,9 +76,9 @@ public class SysUserServiceImpl implements SysUserService {
             return 0;
         }
         // MD5加盐加密
-        String mD5SaltGeneratePassword = MD5Util.saltGenerate(password, userName);
+        String md5SaltGeneratePassword = MD5Util.saltGenerate(password, userName);
         // 创建人修改人应从session中获取暂留
-        return sysUserMapper.insert(userName, realName, mD5SaltGeneratePassword, email, tel, userDesc, state, 1,
+        return sysUserMapper.insert(userName, realName, md5SaltGeneratePassword, email, tel, userDesc, state, 1,
                 new Date(), 1, new Date());
     }
 

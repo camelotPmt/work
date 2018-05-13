@@ -1,8 +1,9 @@
 package com.camelot.pmt.service;
 
-import java.util.List;
 
 import com.camelot.pmt.model.SysUser;
+
+import java.util.List;
 
 /**
  * @author qiaodj
@@ -55,6 +56,7 @@ public interface SysUserService {
      * @return
      */
     List<SysUser> selectAllByPage(Integer pageNum, Integer pageSize);
+
     /**
      * 根据用户名查询用户
      * @param userName

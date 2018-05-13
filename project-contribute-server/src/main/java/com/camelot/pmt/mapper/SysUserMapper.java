@@ -1,12 +1,12 @@
 package com.camelot.pmt.mapper;
 
-import java.util.Date;
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
 
 import com.camelot.pmt.model.SysUser;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.Date;
+import java.util.List;
 
 public interface SysUserMapper {
 
@@ -78,6 +78,12 @@ public interface SysUserMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(SysUser record);
+
+    /**
+     * 根据用户名查询用户
+     * @param userName
+     * @return
+     */
     @Select("select * from sys_user where user_name =#{userName}")
     SysUser queryByUserName(String userName);
 

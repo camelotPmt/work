@@ -1,10 +1,9 @@
 package com.camelot.pmt.config;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 
-import javax.servlet.Filter;
-
+import com.camelot.pmt.shiro.StatelessDefaultSubjectFactory;
+import com.camelot.pmt.shiro.filter.JwtAuthenticationFilter;
+import com.camelot.pmt.shiro.jwt.JwtRealm;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -26,9 +25,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
-import com.camelot.pmt.shiro.StatelessDefaultSubjectFactory;
-import com.camelot.pmt.shiro.filter.JwtAuthenticationFilter;
-import com.camelot.pmt.shiro.jwt.JwtRealm;
+import javax.servlet.Filter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
@@ -109,7 +108,8 @@ public class ShiroConfig {
         securityManager.setSubjectFactory(subjectFactory());
         securityManager.setSessionManager(sessionManager());
 
-        // 关闭session存储，禁用Session作为存储策略的实现，但它没有完全地禁用Session所以需要配合SubjectFactory中的context.setSessionCreationEnabled(false)
+        /* 关闭session存储，禁用Session作为存储策略的实现，
+        但它没有完全地禁用Session所以需要配合SubjectFactory中的context.setSessionCreationEnabled(false)*/
         ((DefaultSessionStorageEvaluator) ((DefaultSubjectDAO) securityManager.getSubjectDAO())
                 .getSessionStorageEvaluator()).setSessionStorageEnabled(false);
 
@@ -166,14 +166,16 @@ public class ShiroConfig {
     @Bean
     @DependsOn("lifecycleBeanPostProcessor")
     public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator() {
-        DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
+        DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator
+                = new DefaultAdvisorAutoProxyCreator();
         advisorAutoProxyCreator.setProxyTargetClass(true);
         return advisorAutoProxyCreator;
     }
 
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor() {
-        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
+        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor
+                = new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager());
         return authorizationAttributeSourceAdvisor;
     }

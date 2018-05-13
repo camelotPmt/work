@@ -1,16 +1,17 @@
+
 package com.camelot.pmt.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.camelot.pmt.mapper.SysRoleMapper;
 import com.camelot.pmt.model.SysRole;
 import com.camelot.pmt.model.SysUser;
 import com.camelot.pmt.service.SysRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * 系统角色

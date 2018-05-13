@@ -1,9 +1,8 @@
 package com.camelot.pmt.config;
 
-import java.nio.charset.Charset;
-import java.util.List;
-import java.util.Properties;
 
+import com.github.pagehelper.PageHelper;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +16,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-import com.github.pagehelper.PageHelper;
-import com.google.common.collect.Lists;
-
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -32,6 +27,10 @@ import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.nio.charset.Charset;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by daiyang on 2018/5/8.
@@ -47,8 +46,10 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     // TODO 需要把 内容放到.yml文件
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("PMT RESTful APIS").description("PMT API 文档").contact(new Contact("RD",
-                        "http://172.21.101.111:3000/daiyang/project-contribute.git", "daiyang@camelotchina.com"))
+                .title("PMT RESTful APIS").description("PMT API 文档")
+                .contact(new Contact("RD",
+                        "http://172.21.101.111:3000/daiyang/project-contribute.git",
+                        "daiyang@camelotchina.com"))
                 .version("1.0.0").build();
     }
 
@@ -64,7 +65,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
                 .required(false).build(); // 非必需，这里是全局配置，然而在登陆的时候是不用验证的
         List<Parameter> parameters = Lists.newArrayList(parameter);
         return new Docket(DocumentationType.SWAGGER_2).host(this.swaggerHost).select()
-                .apis(RequestHandlerSelectors.basePackage("com.camelot.pmt.controller")).paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.camelot.pmt.controller"))
+                .paths(PathSelectors
+                        .any())
                 .build().apiInfo(this.apiInfo()).globalOperationParameters(parameters);
     }
 
@@ -146,13 +149,16 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         super.addResourceHandlers(registry);
-        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
     @Bean
     public HttpMessageConverter<String> responseBodyConverter() {
-        StringHttpMessageConverter converter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+        StringHttpMessageConverter converter
+                = new StringHttpMessageConverter(Charset.forName("UTF-8"));
         return converter;
     }
 
